@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+@import "flowbite/src/themes/default";
+
+@plugin "flowbite/plugin";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source "../../node_modules/flowbite";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-primary-50: #fdf4ff;
+    --color-primary-100: #fae8ff;
+    --color-primary-200: #f5d0fe;
+    --color-primary-300: #f0abfc;
+    --color-primary-400: #e879f9;
+    --color-primary-500: #d946ef;
+    --color-primary-600: #c026d3;
+    --color-primary-700: #a21caf;
+    --color-primary-800: #86198f;
+    --color-primary-900: #701a75;
+    --color-primary-950: #4a044e;
+
+    --font-sans: 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-body: 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+}
+
+@layer components {
+    .form-input {
+        @apply transition duration-200 ease-in-out;
+    }
+
+    .btn-hover {
+        @apply transform hover:scale-105 transition duration-300;
+    }
+
+    .card-hover {
+        @apply transform hover:-translate-y-1 transition duration-300;
+    }
+}
+
+/* Animasi fade in */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
