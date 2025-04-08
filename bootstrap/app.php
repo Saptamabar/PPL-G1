@@ -20,10 +20,5 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
-    })->create();
-    $app = new Illuminate\Foundation\Application(
-        $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-    );
 
-    $app->useEnvironmentPath(__DIR__.'/../');
+    })->create();
