@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Anggrek;
 use App\Models\User;
+use GuzzleHttp\Promise\Create;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        User::factory(10)->create();
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => 'admin123',
+            'role' => 'admin',
         ]);
+        Anggrek::factory(5)->create();
     }
 }

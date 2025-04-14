@@ -24,8 +24,8 @@
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="{{--  --}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('items.*') ? 'bg-primary-600' : '' }}">
-                            Manage Items
+                        <a href="{{ route('anggrek.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('anggrek.*') ? 'bg-primary-600' : '' }}">
+                            Anggrek
                         </a>
                     </li>
                     <li class="mb-2">

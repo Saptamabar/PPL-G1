@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsureIsAdmin;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AnggrekController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\OrchidDetectorController;
 
@@ -52,10 +53,6 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboardadmin', function () {
-    return view('admin.dashboard');
-})->name('dashboardadmin')->middleware('auth','isadmin');
-
 Route::get('/dashboardkaryawan', function () {
     return view('karyawan.dashboard');
 })->name('dashboardkaryawan')->middleware('auth','iskaryawan');
@@ -65,7 +62,15 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('articles', ArticleController::class);
 })->name('articles');
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('anggrek', AnggrekController::class);
+})->name('anggrek');
+
+Route::get('/dashboardadmin', function () {
+    return view('admin.dashboard');
+})->name('dashboardadmin');
+
 Route::get('/detect-orchid', [OrchidDetectorController::class, 'form']);
 Route::post('/detect-orchid', [OrchidDetectorController::class, 'detect'])->name('detect.orchid');
 Route::delete('/delete-detection-image', [OrchidDetectorController::class, 'deleteImage'])->name('detect.deleteImage');
-
