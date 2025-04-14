@@ -32,11 +32,6 @@
                 </div>
 
                 <div class="mb-4">
-                    <h3 class="text-lg font-semibold text-gray-700">Deskripsi</h3>
-                    <p class="mt-2 text-sm text-gray-600">{{ $anggrek->deskripsi ?? 'Tidak ada deskripsi' }}</p>
-                </div>
-
-                <div class="mb-4">
                     <h3 class="text-lg font-semibold text-gray-700">Informasi Tambahan</h3>
                     <div class="mt-2">
                         <p class="text-sm text-gray-600"><span class="font-medium">Dibuat pada:</span> {{ $anggrek->created_at->format('d M Y H:i') }}</p>

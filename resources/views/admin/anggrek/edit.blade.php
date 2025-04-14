@@ -19,10 +19,6 @@
                 <input type="text" name="nama_latin" id="nama_latin" value="{{ old('nama_latin', $anggrek->nama_latin) }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
             </div>
 
-            <div class="mb-4">
-                <label for="deskripsi" class="block text-gray-700 text-sm font-bold mb-2">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ old('deskripsi', $anggrek->deskripsi) }}</textarea>
-            </div>
 
             <div class="mb-4">
                 <label for="foto" class="block text-gray-700 text-sm font-bold mb-2">Foto</label>

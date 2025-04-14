@@ -14,7 +14,7 @@
         </div>
 
         <!-- Sidebar - Hidden on mobile by default -->
-        <div id="sidebar" class="w-64 bg-primary-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 overflow-y-auto">
+        <div id="sidebar" class="w-64 bg-primary-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 overflow-y-auto shadow-2xl">
             <div class="text-xl font-bold mb-8 hidden md:block">Anggrek AI</div>
             <nav>
                 <ul>

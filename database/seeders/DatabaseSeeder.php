@@ -22,6 +22,14 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin123',
             'role' => 'admin',
         ]);
+
+        User::factory()->create([
+            'name' => 'karyawan',
+            'email' => 'karyawan@gmail.com',
+            'password' => 'karyawan123',
+            'role' => 'karyawan'
+        ]);
+        
         Anggrek::factory(5)->create();
     }
 }

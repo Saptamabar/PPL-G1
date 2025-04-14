@@ -55,15 +55,21 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboardkaryawan', function () {
     return view('karyawan.dashboard');
-})->name('dashboardkaryawan')->middleware('auth','iskaryawan');
+})->name('dashboardkaryawan')->middleware('auth','isadmin');
 
 
-Route::middleware(['auth'])->group(function () {
+Route::get('/dashboardkaryawan', function () {
+    return view('karyawan.dashboard');
+})->name('dashboardkaryawan')->middleware('auth',EnsureIsAdmin::class);
+
+
+
+Route::middleware(['auth',EnsureIsAdmin::class])->group(function () {
     Route::resource('articles', ArticleController::class);
 })->name('articles');
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','isAdmin'])->group(function () {
     Route::resource('anggrek', AnggrekController::class);
 })->name('anggrek');
 

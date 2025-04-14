@@ -33,7 +33,6 @@ class AnggrekController extends Controller
         $request->validate([
             'nama_anggrek' => 'required|string|max:255',
             'nama_latin' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -73,7 +72,6 @@ class AnggrekController extends Controller
         $request->validate([
             'nama_anggrek' => 'required|string|max:255',
             'nama_latin' => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

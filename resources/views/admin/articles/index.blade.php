@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Artikel'.Auth::user()->role)
+
 @section('content')
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold">Daftar Artikel</h1>
