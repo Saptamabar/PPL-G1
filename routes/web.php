@@ -58,12 +58,12 @@ Route::get('/dashboardkaryawan', function () {
 })->name('dashboardkaryawan')->middleware('auth','iskaryawan');
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','isadmin'])->group(function () {
     Route::resource('articles', ArticleController::class);
 })->name('articles');
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','isadmin'])->group(function () {
     Route::resource('anggrek', AnggrekController::class);
 })->name('anggrek');
 
@@ -74,3 +74,4 @@ Route::get('/dashboardadmin', function () {
 Route::get('/detect-orchid', [OrchidDetectorController::class, 'form']);
 Route::post('/detect-orchid', [OrchidDetectorController::class, 'detect'])->name('detect.orchid');
 Route::delete('/delete-detection-image', [OrchidDetectorController::class, 'deleteImage'])->name('detect.deleteImage');
+
