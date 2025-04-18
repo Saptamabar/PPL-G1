@@ -23,13 +23,19 @@
                             Dashboard
                         </a>
                     </li>
+
                     <li class="mb-2">
                         <a href="{{ route('anggrek.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('anggrek.*') ? 'bg-primary-600' : '' }}">
                             Anggrek
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="{{--  --}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('employees.*') ? 'bg-primary-600' : '' }}">
+                        <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
+                            Inventaris
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="{{ route('karyawan.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('karyawan.*') ? 'bg-primary-600' : '' }}">
                             Data Karyawan
                         </a>
                     </li>

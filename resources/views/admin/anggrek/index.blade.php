@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Anggrek '.Auth::user()->role)
+
 @section('content')
 <div class="container mx-auto px-2 sm:px-6">
     <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">

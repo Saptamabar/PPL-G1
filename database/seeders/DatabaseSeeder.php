@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Anggrek;
+use App\Models\InventarisHabis;
+use App\Models\InventarisTakHabis;
 use App\Models\User;
-use GuzzleHttp\Promise\Create;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
         Anggrek::factory(5)->create();
+        InventarisHabis::factory(2)->create();
+        InventarisTakHabis::factory(2)->create();
     }
 }
