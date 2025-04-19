@@ -2,9 +2,9 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative text-white py-20 overflow-hidden px-10">
+    <section class="relative text-white py-30 overflow-hidden px-20">
         <!-- Background Image -->
-        <img src="{{ asset('storage/images/hero-orchid.jpg') }}" alt="Background Anggrek" class="absolute inset-0 w-full h-full object-cover">
+        <img src="{{ asset('asset/Hero.jpg') }}" alt="Background Anggrek" class="absolute inset-0 w-full h-full object-cover">
 
         <!-- Overlay -->
         <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -13,95 +13,133 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-2xl">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">Keindahan Alam dalam Setiap Kelopak</h1>
-                <p class="text-xl mb-8">Spesialis anggrek berkualitas dengan berbagai jenis dan layanan perawatan profesional.</p>
-                <div class="flex space-x-4">
-                    <a href="/products" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300">Lihat Produk</a>
-                    <a href="/services" class="bg-transparent hover:bg-white hover:text-primary-800 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300">Layanan Kami</a>
-                </div>
+                <p class="text-xl mb-8">Spesialis budidaya dan perawataan anggrek profesional</p>
+                <a href="/products" class="bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Hubungi kami</a>
             </div>
         </div>
     </section>
     <!-- Produk Unggulan -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Produk Unggulan Kami</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Produk Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-20">
                 @foreach($featuredProducts as $product)
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-                    <img src="{{ asset('images/' . $product['image']) }}" alt="{{ $product['name'] }}" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gray-800">{{ $product['name'] }}</h3>
-                        <p class="text-gray-600 mb-4">{{ $product['description'] }}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-primary-700 font-bold">Rp {{ number_format($product['price'], 0, ',', '.') }}</span>
-                            <a href="/products/{{ $product['id'] }}" class="text-primary-600 hover:text-primary-800 font-medium">Detail</a>
+                <div class="bg-primary-600 rounded-lg shadow-md  hover:shadow-xl transition duration-300">
+                    <div class="pt-4 px-4">
+                    <img src="{{ asset($product['foto']) }}" alt="{{ $product['nama_anggrek'] }}" class="w-full h-48 object-cover rounded-lg">
+                    </div>
+                        <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">{{ $product['nama_anggrek'] }}</h3>
+                        <p class="text-white mb-4 text-1xl">{{ $product['nama_latin'] }}</p>
+                        <div class="flex justify-center items-center">
+                            <a href="/whatsap" class="bg-yellow-400 text-white font-bold w-full text-center mx-4.5 py-2.5 rounded-lg hover:bg-amber-600">Pesan</a>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
             <div class="text-center mt-10">
-                <a href="/products" class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300">Lihat Semua Produk</a>
+                <a href="/products" class="inline-block bg-yellow-400 hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">Lihat Semua Produk</a>
             </div>
         </div>
     </section>
 
-    <!-- Layanan Kami -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Layanan Perawatan Anggrek</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="bg-primary-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">...</svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Perawatan Rutin</h3>
-                    <p class="text-gray-600">Layanan perawatan berkala untuk menjaga kesehatan anggrek Anda.</p>
+    <section class="py-16 bg-white px-20">
+        <div class="container mx-auto px-6">
+            <!-- Header Section -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 px-4">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold text-gray-800">Artikel Terkini</h2>
+                    <p class="text-lg text-gray-600">Kumpulan artikel menarik tentang anggrek setiap harinya</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="bg-primary-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">...</svg>
+                <a href="/artikel" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2.5 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                    Lihat Semua Artikel
+                </a>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+                @foreach($featuredarticles as $artikel)
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100">
+                    <!-- Article Image -->
+                    <div class="p-4">
+                        <img src="{{ asset($artikel['image']) }}" alt="{{ $artikel['title'] }}"
+                             class="w-full h-48 object-cover rounded-lg">
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Perbaikan Anggrek</h3>
-                    <p class="text-gray-600">Revitalisasi anggrek yang sakit atau kurang subur.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="bg-primary-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">...</svg>
+
+                    <!-- Article Content -->
+                    <div class="px-5 pb-5">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">{{ $artikel['title'] }}</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3 text-sm">{{ $artikel['content'] }}</p>
+
+                        <!-- Read More Button -->
+                        <div class="mt-4">
+                            <a href="{{ route('articles.show', $artikel['id']) }}"
+                               class="block w-full text-center bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition duration-300">
+                                Baca Selengkapnya
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Konsultasi</h3>
-                    <p class="text-gray-600">Konsultasi dengan ahli anggrek untuk solusi terbaik.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="bg-primary-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">...</svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Workshop</h3>
-                    <p class="text-gray-600">Pelatihan merawat dan membudidayakan anggrek.</p>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
     <!-- Testimoni -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Apa Kata Pelanggan Kami</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 mr-2">★★★★★</div>
+    <section class="py-16 px-4 sm:px-20 lg:px-20 bg-white">
+        <div class="container mx-auto">
+            <!-- Header Section -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold text-gray-800">AI Deteksi Penyakit Anggrek</h2>
+                    <p class="text-lg text-gray-600">Bantu kamu identifikasi penyakit anggrek dengan AI untuk penanganan yang tepat</p>
+                </div>
+                <a href="/deteksi" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2.5 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                    Coba fitur
+                </a>
+            </div>
+
+            <!-- Result Box -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Image Section -->
+                    <div class="p-6 border-r border-gray-200">
+                        <div class="relative">
+                            <img src="{{ asset('asset/Contoh_deteksi.png') }}" alt="Anggrek yang dideteksi" class="w-full h-auto rounded-lg">
+                        </div>
                     </div>
-                    <p class="text-gray-600 mb-4">"Anggrek dari sini selalu segar dan tahan lama. Layanan perawatannya juga sangat profesional."</p>
-                    <div class="flex items-center">
-                        <img src="{{ asset('images/avatar-1.jpg') }}" alt="Pelanggan" class="w-10 h-10 rounded-full mr-3">
-                        <div>
-                            <h4 class="font-bold">Budi Santoso</h4>
-                            <p class="text-sm text-gray-500">Pemilik Kebun Anggrek</p>
+
+                    <!-- Result Section -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Hasil Deteksi</h3>
+
+                        <div class="space-y-4">
+
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Jenis Penyakit</p>
+                                <p class="text-red-600 font-semibold">Brown Spot Disease</p>
+                            </div>
+
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Tingkat Kepercayaan</p>
+
+                                <p class="text-gray-800">95.57%</p>
+                            </div>
+
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Ukuran Area Terinfeksi</p>
+                                <p class="text-gray-800">57px × 303px</p>
+                            </div>
+
+                            <div class="pt-4">
+                                <a href="/deteksi" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2.5 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                                    Deteksi Gambar Lain
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Testimoni lainnya -->
             </div>
         </div>
     </section>

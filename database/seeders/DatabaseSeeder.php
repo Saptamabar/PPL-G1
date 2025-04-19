@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Anggrek;
+use App\Models\Article;
 use App\Models\InventarisHabis;
 use App\Models\InventarisTakHabis;
 use App\Models\User;
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         Anggrek::factory(5)->create();
         InventarisHabis::factory(2)->create();
         InventarisTakHabis::factory(2)->create();
+        Article::factory(3)->create();
     }
 }

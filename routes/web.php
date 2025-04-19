@@ -6,42 +6,21 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnggrekController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\OrchidDetectorController;
+use App\Models\Anggrek;
 
-Route::get('/', function () {
-    $featuredProducts = [
-        [
-            'id' => 1,
-            'name' => 'Anggrek Bulan Putih',
-            'description' => 'Anggrek bulan dengan bunga putih bersih dan aroma harum.',
-            'price' => 175000,
-            'image' => 'orchid-1.jpg'
-        ],
-
-    ];
-
-    return view('Company_Profile.home', ['featuredProducts' => $featuredProducts]);
-});
+Route::get('/', [HomeController::class,'products']);
 
 Route::get('/about', function () {
     return view('Company_Profile.about');
 });
 
-Route::get('/products', function () {
-    $products = [
-        [
-            'id' => 1,
-            'name' => 'Anggrek Bulan Putih',
-            'species' => 'Phalaenopsis amabilis',
-            'price' => 175000,
-            'image' => 'orchid-1.jpg',
-            'is_new' => true
-        ],
-    ];
+// Route::get('/products', function () {
 
-    return view('Company_Profile.products', ['products' => $products]);
-});
+//     return view('Company_Profile.products', [Anggrek::all()->paginate(3)]);
+// });
 
 Route::get('/services', function () {
     return view('Company_Profile.services');

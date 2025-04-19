@@ -17,9 +17,9 @@ class AnggrekFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama_anggrek' => $this->faker->unique()->words(2, true),
+            'nama_anggrek' => fake()->unique()->words(2, true),
             'foto'=> 'storage/foto_anggrek/hero-orchid.jpg',
-            'nama_latin' => $this->faker->unique()->words(2, true),
+            'nama_latin' => fake()->unique()->words(2, true),
         ];
     }
 }
