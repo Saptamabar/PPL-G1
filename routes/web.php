@@ -17,10 +17,6 @@ Route::get('/about', function () {
     return view('Company_Profile.about');
 });
 
-// Route::get('/products', function () {
-
-//     return view('Company_Profile.products', [Anggrek::all()->paginate(3)]);
-// });
 
 Route::get('/services', function () {
     return view('Company_Profile.services');
@@ -32,7 +28,7 @@ Route::get('/contact', function () {
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboardkaryawan', function () {
     return view('karyawan.dashboard');
@@ -50,7 +46,7 @@ Route::middleware(['auth','isadmin'])->group(function () {
 
 Route::get('/dashboardadmin', function () {
     return view('admin.dashboard');
-})->name('dashboardadmin');
+})->name('dashboardadmin')->middleware(['auth','isadmin']);
 
 Route::get('/detect-orchid', [OrchidDetectorController::class, 'form']);
 Route::post('/detect-orchid', [OrchidDetectorController::class, 'detect'])->name('detect.orchid');

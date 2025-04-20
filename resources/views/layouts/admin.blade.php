@@ -4,7 +4,7 @@
 <body class="bg-gray-100 font-sans">
     <div class="flex flex-col md:flex-row h-screen">
         <!-- Mobile Sidebar Toggle -->
-        <div class="md:hidden bg-primary-800 p-4 flex justify-between items-center sticky top-0 z-20">
+        <div class="md:hidden bg-primary-600 p-4 flex justify-between items-center sticky top-0 z-20">
             <div class="text-xl font-bold text-white">Anggrek AI</div>
             <button id="sidebarToggle" class="text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -14,43 +14,59 @@
         </div>
 
         <!-- Sidebar - Hidden on mobile by default -->
-        <div id="sidebar" class="w-64 bg-primary-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 overflow-y-auto">
-            <div class="text-xl font-bold mb-8 hidden md:block">Anggrek AI</div>
-            <nav>
+        <div id="sidebar" class="w-64 bg-primary-500 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 overflow-y-auto flex flex-col">
+            <div>
+                <div class="text-xl font-bold mb-8 hidden md:block">Anggrek AI</div>
+                <nav>
+                    <ul>
+                        <li class="mb-2">
+                            <a href="{{ route('dashboardadmin') }}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-600' : '' }}">
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <li class="mb-2">
+                            <a href="{{ route('anggrek.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('anggrek.*') ? 'bg-primary-600' : '' }}">
+                                Anggrek
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
+                                Inventaris
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ route('karyawan.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('karyawan.*') ? 'bg-primary-600' : '' }}">
+                                Data Karyawan
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{--  --}}" class="block px-4 py-2 rounded hover:bg-primary-700">
+                                Ajukan Izin
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="{{ route('articles.index') }}" class="block px-4 py-2 rounded hover:bg-primary-700  {{ request()->routeIs('articles.*') ? 'bg-primary-600' : '' }}">
+                                Article
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Logout Button at the Bottom -->
+            <div class="mt-auto">
                 <ul>
                     <li class="mb-2">
-                        <a href="{{ route('dashboardadmin') }}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-600' : '' }}">
-                            Dashboard
-                        </a>
-                    </li>
-
-                    <li class="mb-2">
-                        <a href="{{ route('anggrek.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('anggrek.*') ? 'bg-primary-600' : '' }}">
-                            Anggrek
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
-                            Inventaris
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{{ route('karyawan.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('karyawan.*') ? 'bg-primary-600' : '' }}">
-                            Data Karyawan
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{{--  --}}" class="block px-4 py-2 rounded hover:bg-primary-700">
-                            Ajukan Izin
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="{{ route('articles.index') }}" class="block px-4 py-2 rounded hover:bg-primary-700  {{ request()->routeIs('articles.*') ? 'bg-primary-600' : '' }}">
-                            Article
-                        </a>
+                        <form action="{{ route('logout') }}" method="GET">
+                        @csrf
+                        <button type="submit" class="block px-4 w-full py-2 rounded hover:bg-yellow-600 bg-yellow-400 }}">
+                            Logout
+                        </button>
+                    </form>
                     </li>
                 </ul>
-            </nav>
+            </div>
         </div>
 
         <!-- Main Content -->

@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\EnsureIsAdmin;
 use App\Http\Middleware\EnsureIsKaryawan;
+use App\Http\Middleware\HandleRememberMe;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,9 +17,10 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'isadmin'=>EnsureIsAdmin::class,
-            'iskaryawan'=>EnsureIsKaryawan::class
+            'iskaryawan'=>EnsureIsKaryawan::class,
+            'remember'=>HandleRememberMe::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+
     })->create();

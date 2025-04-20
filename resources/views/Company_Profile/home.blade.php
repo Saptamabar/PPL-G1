@@ -24,15 +24,15 @@
             <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Produk Kami</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-20">
                 @foreach($featuredProducts as $product)
-                <div class="bg-primary-600 rounded-lg shadow-md  hover:shadow-xl transition duration-300">
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-xl transition duration-300">
                     <div class="pt-4 px-4">
                     <img src="{{ asset($product['foto']) }}" alt="{{ $product['nama_anggrek'] }}" class="w-full h-48 object-cover rounded-lg">
                     </div>
                         <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-white">{{ $product['nama_anggrek'] }}</h3>
-                        <p class="text-white mb-4 text-1xl">{{ $product['nama_latin'] }}</p>
+                        <h3 class="text-xl font-bold mb-2 text-grey-900">{{ $product['nama_anggrek'] }}</h3>
+                        <p class="text-grey-900 mb-4 text-1xl">{{ $product['nama_latin'] }}</p>
                         <div class="flex justify-center items-center">
-                            <a href="/whatsap" class="bg-yellow-400 text-white font-bold w-full text-center mx-4.5 py-2.5 rounded-lg hover:bg-amber-600">Pesan</a>
+                            <a href="/whatsap" class="bg-primary-600 text-white font-bold w-full text-center mx-4.5 py-2.5 rounded-lg hover:bg-primary-700">Pesan</a>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
             <!-- Articles Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
                 @foreach($featuredarticles as $artikel)
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-100">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200">
                     <!-- Article Image -->
                     <div class="p-4">
                         <img src="{{ asset($artikel['image']) }}" alt="{{ $artikel['title'] }}"

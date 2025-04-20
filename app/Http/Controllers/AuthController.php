@@ -10,7 +10,23 @@ class AuthController extends Controller
 {
     public function showLoginForm()
     {
+        if (Auth::viaRemember()) {
+            return $this->redirectToDashboard();
+        }
+
+        if (Auth::check()) {
+            return $this->redirectToDashboard();
+        }
+
         return view('auth.login');
+    }
+
+    protected function redirectToDashboard()
+    {
+        if (Auth::user()->role === 'admin') {
+            return redirect('/dashboardadmin');
+        }
+        return redirect('/dashboardkaryawan');
     }
 
     public function login(Request $request)
@@ -20,7 +36,9 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $remember = $request->has('remember');
+
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin') {
@@ -35,7 +53,6 @@ class AuthController extends Controller
         ])->onlyInput('email');
     }
 
-    // Proses logout
     public function logout(Request $request)
     {
         Auth::logout();
