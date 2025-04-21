@@ -31,7 +31,7 @@
         <div class="flex flex-col lg:flex-row gap-8">
             @if($article->image)
                 <div class="lg:w-1/2">
-                    <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}"
+                    <img src="{{ asset($article->image) }}" alt="{{ $article->title }}"
                          class="w-full h-auto max-h-[500px] object-cover rounded-lg">
                 </div>
             @endif

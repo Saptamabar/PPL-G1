@@ -11,15 +11,15 @@ use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\OrchidDetectorController;
 use App\Models\Anggrek;
 
-Route::get('/', [HomeController::class,'products']);
+Route::get('/', [HomeController::class,'index']);
 
 Route::get('/about', function () {
     return view('Company_Profile.about');
 });
 
-
-Route::get('/services', function () {
-    return view('Company_Profile.services');
+Route::prefix('Artikel')->group(function(){
+    Route::get('/',[HomeController::class,'Artikel'])->name('Artikel.index');
+    Route::get('/{Article}',[HomeController::class,'Artikelshow'])->name('Artikel.show');
 });
 
 Route::get('/contact', function () {

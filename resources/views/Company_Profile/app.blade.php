@@ -17,7 +17,7 @@
             <div class="hidden md:flex space-x-6">
                 <a href="/" class="hover:text-yellow-300 py-2 font-bold">Beranda</a>
                 <a href="/products" class="hover:text-yellow-300 py-2 font-bold">Produk</a>
-                <a href="/services" class="hover:text-yellow-300 py-2 font-bold">Artikel</a>
+                <a href="/Artikel" class="hover:text-yellow-300 py-2 font-bold">Artikel</a>
                 <a href="/detect-orchid" class="hover:text-yellow-300 py-2 font-bold">Deteksi Penyakit</a>
             </div>
             <div class="hidden md:flex">

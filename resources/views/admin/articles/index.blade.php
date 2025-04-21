@@ -21,7 +21,7 @@
             @foreach ($articles as $article)
                 <div class="bg-white shadow rounded-lg overflow-hidden h-full flex flex-col">
                     @if($article->image)
-                        <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}"
+                        <img src="{{ asset( $article->image) }}" alt="{{ $article->title }}"
                              class="w-full h-48 object-cover">
                     @endif
 
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="px-6 pb-4">
-                        <a href="{{ route('articles.show', $article) }}"
+                        <a href="{{ route('articles.show',$article) }}"
                            class="text-primary-600 hover:text-primary-800 font-medium">
                             Baca selengkapnya...
                         </a>

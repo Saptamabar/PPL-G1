@@ -6,12 +6,12 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ArticleController extends Controller
 {
     use AuthorizesRequests;
+
     public function index()
     {
         $articles = Article::with('user')->latest()->get();
@@ -64,7 +64,7 @@ class ArticleController extends Controller
         ]);
 
         if ($request->has('remove_image')) {
-          
+
             if ($article->image) {
                 Storage::disk('public')->delete($article->image);
                 $validated['image'] = null;
@@ -94,6 +94,5 @@ class ArticleController extends Controller
 
         return redirect()->route('articles.index')->with('success', 'Artikel berhasil dihapus!');
     }
-
-
+    
 }
