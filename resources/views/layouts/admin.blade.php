@@ -14,24 +14,24 @@
         </div>
 
         <!-- Sidebar - Hidden on mobile by default -->
-        <div id="sidebar" class="w-64 bg-primary-500 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 overflow-y-auto flex flex-col">
+        <div id="sidebar" class="w-64 bg-primary-700 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 overflow-y-auto flex flex-col">
             <div>
                 <div class="text-xl font-bold mb-8 hidden md:block">Anggrek AI</div>
                 <nav>
                     <ul>
                         <li class="mb-2">
-                            <a href="{{ route('dashboardadmin') }}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-600' : '' }}">
+                            <a href="{{ route('dashboardadmin') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-500' : '' }}">
                                 Dashboard
                             </a>
                         </li>
 
                         <li class="mb-2">
-                            <a href="{{ route('anggrek.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('anggrek.*') ? 'bg-primary-600' : '' }}">
+                            <a href="{{ route('anggrek.index')}}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('anggrek.*') ? 'bg-primary-600' : '' }}">
                                 Anggrek
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
+                            <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-400 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
                                 Inventaris
                             </a>
                         </li>
@@ -70,8 +70,8 @@
         </div>
 
         <!-- Main Content -->
-        <div class="flex-1 overflow-auto pt-16 md:pt-0">
-            <header class="bg-white shadow p-4 sticky top-0 z-10">
+        <div class="flex-1 overflow-auto md:pt-0">
+            <header class="bg-white shadow p-4 sticky top-0 z-10 ">
                 <div class="flex justify-between items-center">
                     <h1 class="text-xl md:text-2xl font-semibold text-gray-800">@yield('title')</h1>
                     <div class="text-gray-600 text-sm md:text-base px-2.5">
