@@ -1,21 +1,13 @@
 @extends('Company_Profile.app')
 
 @section('content')
-    <section class="py-12 px-20 bg-white">
-        <!-- Search Bar -->
+    <section class="py-7 px-20 bg-white">
+       <h2 class="text-3xl font-bold text-center mb-7 text-gray-800">Daftar Artikel </h2>
         <div class="mb-8 max-w-2xl mx-auto">
             <form action="{{ route('Artikel.index') }}" method="GET" class="flex items-center">
-                <input
-                    type="text"
-                    name="query"
-                    placeholder="Cari artikel..."
-                    class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    value="{{ request('query') ?? '' }}"
-                >
-                <button
-                    type="submit"
-                    class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-r-lg transition duration-200"
-                >
+                <input type="text" name="query" placeholder="Cari artikel..." class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    value="{{ request('query') ?? '' }}">
+                <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-r-lg transition duration-200">
                     Cari
                 </button>
             </form>
@@ -54,7 +46,7 @@
                         </div>
 
                         <div class="px-6 pb-4">
-                            <a href="{{ route('Artikel.show', $article->$id) }}"
+                            <a href="{{ route('Artikel.show', $article->id) }}"
                                 class="text-primary-600 hover:text-primary-800 font-medium">
                                 Baca selengkapnya...
                             </a>
@@ -62,6 +54,12 @@
                     </div>
                 @endforeach
             </div>
+        @endif
+
+        @if($articles->hasPages())
+        <div class="mt-10 flex flex-col">
+            {{ $articles->links() }}
+        </div>
         @endif
 
     </section>

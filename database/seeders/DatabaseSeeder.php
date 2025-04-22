@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
             'password' => 'admin123',
             'role' => 'admin',
         ]);
-        Anggrek::factory(5)->create();
+        Anggrek::factory(11)->create();
         InventarisHabis::factory(2)->create();
         InventarisTakHabis::factory(2)->create();
-        Article::factory(3)->create();
+        Article::factory(11)->create();
     }
 }

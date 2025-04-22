@@ -10,20 +10,24 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\OrchidDetectorController;
 use App\Models\Anggrek;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 Route::get('/', [HomeController::class,'index']);
 
-Route::get('/about', function () {
-    return view('Company_Profile.about');
-});
 
 Route::prefix('Artikel')->group(function(){
     Route::get('/',[HomeController::class,'Artikel'])->name('Artikel.index');
-    Route::get('/{Article}',[HomeController::class,'Artikelshow'])->name('Artikel.show');
+    Route::get('/{id}',[HomeController::class,'Artikelshow'])->name('Artikel.show');
 });
+
 
 Route::get('/contact', function () {
     return view('Company_Profile.contact');
+});
+
+Route::prefix('products')->group(function(){
+    Route::get('/',[HomeController::class,'anggreks'])->name('Product.index');
+    Route::get('/{id}',[HomeController::class,'anggrekshow'])->name('Product.show');
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
