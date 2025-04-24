@@ -9,6 +9,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\OrchidDetectorController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Anggrek;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
@@ -20,7 +21,12 @@ Route::prefix('Artikel')->group(function(){
     Route::get('/{id}',[HomeController::class,'Artikelshow'])->name('Artikel.show');
 });
 
-
+Route::prefix('profile')->group(function(){
+    Route::get('/',[ProfileController::class,'index'])->name('profile.index');
+    Route::get('/edit',[ProfileController::class,'show'])->name('profile.edit');
+    Route::post('/editpassword',[ProfileController::class,'update'])->name('profile.update');
+    Route::post('/edit',[ProfileController::class,'password'])->name('profile.password');
+});
 Route::get('/contact', function () {
     return view('Company_Profile.contact');
 });

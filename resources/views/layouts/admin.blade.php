@@ -20,33 +20,32 @@
                 <nav>
                     <ul>
                         <li class="mb-2">
-                            <a href="{{ route('dashboardadmin') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-500' : '' }}">
+                            <a href="{{ route('dashboardadmin') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-600' : '' }}">
                                 Dashboard
                             </a>
                         </li>
-
+                        <li class="mb-2">
+                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-600' : '' }}">
+                                Profile
+                            </a>
+                        </li>
                         <li class="mb-2">
                             <a href="{{ route('anggrek.index')}}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('anggrek.*') ? 'bg-primary-600' : '' }}">
                                 Anggrek
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-400 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
+                            <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
                                 Inventaris
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('karyawan.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('karyawan.*') ? 'bg-primary-600' : '' }}">
+                            <a href="{{ route('karyawan.index')}}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('karyawan.*') ? 'bg-primary-600' : '' }}">
                                 Data Karyawan
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{--  --}}" class="block px-4 py-2 rounded hover:bg-primary-700">
-                                Ajukan Izin
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="{{ route('articles.index') }}" class="block px-4 py-2 rounded hover:bg-primary-700  {{ request()->routeIs('articles.*') ? 'bg-primary-600' : '' }}">
+                            <a href="{{ route('articles.index') }}" class="block px-4 py-2 rounded hover:bg-primary-600  {{ request()->routeIs('articles.*') ? 'bg-primary-600' : '' }}">
                                 Article
                             </a>
                         </li>

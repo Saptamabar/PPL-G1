@@ -22,6 +22,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => 'admin123',
             'role' => 'admin',
+            'foto_profile' => 'asset/Hero.jpg',
+            'no_hp' => "01231231312"
+        ]);
+        User::factory()->create([
+            'name' => 'karyawan',
+            'email' => 'Karyawan@gmail.com',
+            'password' => 'karyawan123',
+            'role' => 'karyawan',
+            'foto_profile' => 'asset/Hero.jpg',
+            'no_hp' => "01231231312"
         ]);
         Anggrek::factory(11)->create();
         InventarisHabis::factory(2)->create();
