@@ -14,8 +14,8 @@
         </div>
 
         <!-- Sidebar - Hidden on mobile by default -->
-        <div id="sidebar" class="w-64 bg-primary-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50">
-            <div class="text-xl font-bold mb-8 hidden md:block">Anggrek AI</div>
+        <div id="sidebar" class="w-64 bg-primary-800 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 flex flex-col">
+            <div class="text-xl font-bold mb-8 hidden md:block ">Anggrek AI</div>
             <nav>
                 <ul>
                     <li class="mb-2">
@@ -40,7 +40,20 @@
                     </li>
                 </ul>
             </nav>
+            <div class="mt-auto">
+                <ul>
+                    <li class="mb-2">
+                        <form action="{{ route('logout') }}" method="GET">
+                        @csrf
+                        <button type="submit" class="block px-4 w-full py-2 rounded hover:bg-yellow-600 bg-yellow-400 }}">
+                            Logout
+                        </button>
+                    </form>
+                    </li>
+                </ul>
+            </div>
         </div>
+
 
         <!-- Main Content -->
         <div class="flex-1 overflow-auto">

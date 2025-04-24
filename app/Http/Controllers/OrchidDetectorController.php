@@ -20,42 +20,47 @@ class OrchidDetectorController extends Controller
         ]);
 
         try {
-            // Store the uploaded image
+            // Simpan gambar sementara
             $imagePath = $request->file('image')->store('orchid-images', 'public');
 
-            // Prepare image for API
-            $base64Image = base64_encode(file_get_contents($request->file('image')->getRealPath()));
+            // Ambil base64 dari file yang diupload
+            $imageData = base64_encode(file_get_contents($request->file('image')->getRealPath()));
+            $mime = $request->file('image')->getMimeType(); // ex: image/jpeg
 
-            // API Configuration
+            // Format base64 untuk HTML/JSON
+            $base64Image = "data:$mime;base64,$imageData";
+
+            // Konfigurasi
             $apiKey = config('api_orchid.apikey');
-            $url = "https://detect.roboflow.com/orchid_detector/2?api_key=$apiKey";
+            $url = "https://serverless.roboflow.com/infer/workflows/sapta/custom-workflow";
 
-            // Make API request
+            // Kirim request
             $response = Http::withOptions(['verify' => false])
                 ->withHeaders([
-                    'Content-Type' => 'application/x-www-form-urlencoded'
+                    'Content-Type' => 'application/json'
                 ])
-                ->withBody($base64Image, 'application/x-www-form-urlencoded')
-                ->post($url);
+                ->post($url, [
+                    'api_key' => $apiKey,
+                    'inputs' => [
+                        'image' => [
+                            'type' => 'base64',
+                            'value' => $base64Image
+                        ]
+                    ]
+                ]);
 
             if ($response->successful()) {
                 $result = $response->json();
-                // Add image path to the result
-
                 $result['image_path'] = $imagePath;
-                $result['original_width'] = $result['image']['width'];
-                $result['original_height'] = $result['image']['height'];
-
                 return back()->with('result', $result);
             }
 
-            // Delete the stored image if API fails
+            // Hapus jika gagal
             Storage::delete($imagePath);
 
             return back()->withErrors(['error' => 'Gagal memproses gambar: ' . $response->body()]);
 
         } catch (\Exception $e) {
-            // Delete the stored image if something goes wrong
             if (isset($imagePath)) {
                 Storage::delete($imagePath);
             }
@@ -63,6 +68,8 @@ class OrchidDetectorController extends Controller
             return back()->withErrors(['error' => 'Terjadi kesalahan: ' . $e->getMessage()]);
         }
     }
+
+
 
     public function deleteImage(Request $request)
     {

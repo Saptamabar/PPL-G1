@@ -30,6 +30,7 @@
                 <script>
                     window.addEventListener('load', () => {
                         const imagePath = @json(session('result.image_path'));
+                        console.log(@json(session('result')));
 
                         // Kirim DELETE request untuk menghapus gambar setelah ditampilkan
                         fetch("{{ route('detect.deleteImage') }}", {
@@ -51,16 +52,13 @@
                     <h3 class="text-2xl font-bold mb-6 text-gray-800">Hasil Deteksi</h3>
 
                     <div class="flex flex-col md:flex-row gap-8 items-start">
-                        <!-- Gambar dan Bounding Box -->
+                        <!-- Gambar Hasil Deteksi -->
                         <div class="relative w-full md:w-2/3">
-                            <h4 class="font-bold mb-2 text-gray-700">Hasil Deteksi Penyakit:</h4>
+                            <h4 class="font-bold mb-2 text-gray-700">Gambar yang Diperiksa:</h4>
                             <div class="relative w-full">
                                 <img src="{{ asset('storage/' . session('result.image_path')) }}"
                                     alt="Detected Orchid"
-                                    id="detectionImage"
                                     class="w-full h-auto rounded-lg shadow-md">
-
-                                <div id="boundingBoxes" class="absolute inset-0 z-10"></div>
                             </div>
                         </div>
 
@@ -71,66 +69,21 @@
                                 <div class="grid grid-cols-1 gap-4">
                                     <div>
                                         <p class="font-semibold">Jenis Penyakit:</p>
-                                        <p>{{ session('result.predictions.0.class') }}</p>
+                                        <p>{{ session('result.outputs.0.predictions.predictions.0.class') }}</p>
                                     </div>
                                     <div>
                                         <p class="font-semibold">Tingkat Kepercayaan:</p>
-                                        <p>{{ round(session('result.predictions.0.confidence') * 100, 2) }}%</p>
+                                        <p>{{ round(session('result.outputs.0.predictions.predictions.0.confidence') * 100, 2) }}%</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold">Ukuran Area:</p>
-                                        <p>{{ session('result.predictions.0.width') }}px × {{ session('result.predictions.0.height') }}px</p>
+                                        <p class="font-semibold">Waktu Proses:</p>
+                                        <p>{{ round(session('result.outputs.0.predictions.time'), 4) }} detik</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const boundingBoxes = document.getElementById('boundingBoxes');
-                        const image = document.getElementById('detectionImage');
-
-                        const originalWidth = {{ session('result.original_width') }};
-                        const originalHeight = {{ session('result.original_height') }};
-
-                        @foreach (session('result.predictions') as $prediction)
-                            const box = document.createElement('div');
-                            box.classList.add('absolute');
-                            box.style.border = '2px solid red';
-                            box.style.boxSizing = 'border-box';
-                            box.style.zIndex = 20;
-
-                            // Hitung dalam persentase
-                            const xPercent = ({{ $prediction['x'] }} - {{ $prediction['width'] }} / 2) / originalWidth * 100;
-                            const yPercent = ({{ $prediction['y'] }} - {{ $prediction['height'] }} / 2) / originalHeight * 100;
-                            const widthPercent = {{ $prediction['width'] }} / originalWidth * 100;
-                            const heightPercent = {{ $prediction['height'] }} / originalHeight * 100;
-
-                            box.style.left = `${xPercent}%`;
-                            box.style.top = `${yPercent}%`;
-                            box.style.width = `${widthPercent}%`;
-                            box.style.height = `${heightPercent}%`;
-
-                            const label = document.createElement('div');
-                            label.style.position = 'absolute';
-                            label.style.top = '-20px';
-                            label.style.left = '0';
-                            label.style.backgroundColor = 'rgba(255, 0, 0, 0.7)';
-                            label.style.color = 'white';
-                            label.style.padding = '2px 6px';
-                            label.style.fontSize = '12px';
-                            label.style.borderRadius = '4px';
-                            label.style.fontWeight = 'bold';
-                            label.innerText = '{{ $prediction['class'] }} ({{ round($prediction['confidence'] * 100, 1) }}%)';
-
-                            box.appendChild(label);
-                            boundingBoxes.appendChild(box);
-                        @endforeach
-                    });
-                </script>
             @endif
         </div>
     </div>
