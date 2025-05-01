@@ -80,7 +80,7 @@ class AnggrekController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('foto')) {
-            // Delete old photo if exists
+           
             if ($anggrek->foto) {
                 Storage::disk('public')->delete($anggrek->foto);
             }

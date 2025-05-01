@@ -25,7 +25,7 @@
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('dashboardadmin') ? 'bg-primary-600' : '' }}">
+                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('profile.*') ? 'bg-primary-600' : '' }}">
                                 Profile
                             </a>
                         </li>

@@ -8,13 +8,20 @@ use Illuminate\Http\Request;
 
 class InventarisController extends Controller
 {
-    // Inventaris Habis Methods
     public function index()
     {
         $inventarisHabis = InventarisHabis::latest()->paginate(10);
         $inventarisTakHabis = InventarisTakHabis::latest()->paginate(10);
 
         return view('admin.inventaris.index', compact('inventarisHabis', 'inventarisTakHabis'));
+    }
+
+    public function indexkaryawan()
+    {
+        $inventarisHabis = InventarisHabis::latest()->paginate(10);
+        $inventarisTakHabis = InventarisTakHabis::latest()->paginate(10);
+
+        return view('karyawan.inventaris.index', compact('inventarisHabis', 'inventarisTakHabis'));
     }
 
     public function createHabis()
