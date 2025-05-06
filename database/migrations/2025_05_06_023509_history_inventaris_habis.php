@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inventaris_tak_habis', function (Blueprint $table) {
+        Schema::create('history_inventaris_habis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->unique();
-            $table->string('kode')->unique();
-            $table->enum('status',['digunakan','ready'])->default('ready');
+            $table->date('waktu penggunaan');
+            $table->integer('jumlah');
+            $table->foreignId('inventaris_habis');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventaris_tak_habis');
+        Schema::dropIfExists('history_inventaris_habis');
     }
 };
