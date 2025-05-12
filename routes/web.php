@@ -58,9 +58,29 @@ Route::middleware('auth')->group(function() {
         Route::get('/dashboardkaryawan', function () {
             return view('karyawan.dashboard');
         })->name('dashboardkaryawan');
-        Route::get('/inventaris',[InventarisController::class,'indexkaryawan'])->name('inventaris');
-    });
+        Route::get('/inventarisKaryawan', [InventarisController::class, 'indexkaryawan'])->name('inventariskaryawan.index');
 
+        Route::prefix('inventariskaryawan')->group(function(){
+            Route::get('/habis/usage', [InventarisController::class, 'showUsageForm'])->name('inventariskaryawan-habis.usage');
+            Route::post('/habis/usage', [InventarisController::class, 'processUsage'])->name('inventariskaryawan-habis.process-usage');
+            Route::get('/habis/{inventarisHabi}/history', [InventarisController::class, 'showConsumableHistory'])->name('inventariskaryawan-habis.history');
+            Route::get('/habis/quick-usage/{id}', [InventarisController::class, 'showQuickUsageForm'])->name('inventariskaryawan-habis.quick-usage');
+            Route::post('/habis/quick-usage/{inventarisHabis}', [InventarisController::class, 'processQuickUsage'])->name('inventariskaryawan-habis.process-quick-usage');
+
+
+            // Non-Consumable Items
+            Route::get('/tak-habis/borrow', [InventarisController::class, 'showBorrowForm'])->name('inventariskaryawan-tak-habis.borrow');
+            Route::get('/tak-habis/borrow/{inventarisTakHabis}', [InventarisController::class, 'borrowItemForm'])->name('inventariskaryawan-tak-habis.borrow-item');
+            Route::post('/tak-habis/borrow/{inventarisTakHabis}', [InventarisController::class, 'processBorrow'])->name('inventariskaryawan-tak-habis.process-borrow');
+            Route::post('/tak-habis/return/{inventarisTakHabis}', [InventarisController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return');
+            Route::post('/tak-habis/return/{id}', [InventarisController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return-item');
+            Route::get('/tak-habis/history/{inventarisTakHabis}', [InventarisController::class, 'showNonConsumableHistory'])->name('inventariskaryawan-tak-habis.history');
+
+
+    // Non-Consumable Items
+
+        });
+    });
 
     Route::middleware('isadmin')->group(function() {
 

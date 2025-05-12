@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama')->unique();
             $table->string('kode')->unique();
-            $table->enum('status',['digunakan','ready'])->default('ready');
+            $table->enum('status',['tidak tersedia','tersedia'])->default('tersedia');
             $table->timestamps();
         });
     }

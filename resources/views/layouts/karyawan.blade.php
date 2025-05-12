@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="{{ route('inventaris')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('items.*') ? 'bg-primary-600' : '' }}">
+                        <a href="{{ route('inventariskaryawan.index') }}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('inventariskaryawan.*') ? 'bg-primary-600' : '' }}">
                             Manage Items
                         </a>
                     </li>

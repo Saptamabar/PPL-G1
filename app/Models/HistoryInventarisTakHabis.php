@@ -21,7 +21,8 @@ class HistoryInventarisTakHabis extends Model
         'waktu_peminjaman',
         'waktu_pengembalian',
         'inventaris_tak_habis_id',
-        'user_id'
+        'user_id',
+        'status'
     ];
 
     public function user()
