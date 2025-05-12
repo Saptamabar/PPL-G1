@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('history_inventaris_habis', function (Blueprint $table) {
             $table->id();
-            $table->date('waktu penggunaan');
+            $table->date('waktu_penggunaan');
             $table->integer('jumlah');
-            $table->foreignId('inventaris_habis');
-            $table->foreignId('user_id');
+            $table->foreignId('inventaris_habis_id')->constrained('inventaris_habis')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -6,26 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('history_inventaris_tak_habis', function (Blueprint $table) {
             $table->id();
-            $table->date('waktu peminjaman');
-            $table->date('waktu pengembalian')->nullable();
-            $table->foreignId('inventaris_tak_habis');
-            $table->foreignId('user_id');
+            $table->date('waktu_peminjaman');
+            $table->date('waktu_pengembalian')->nullable();
+            $table->foreignId('inventaris_tak_habis_id')->constrained('inventaris_tak_habis')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-         Schema::dropIfExists('history_inventaris_tak_habis');
+        Schema::dropIfExists('history_inventaris_tak_habis');
     }
 };

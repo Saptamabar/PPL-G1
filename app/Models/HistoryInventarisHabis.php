@@ -5,16 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class history_inventaris_habis extends Model
+class HistoryInventarisHabis extends Model
 {
     use HasFactory;
 
     protected $table = 'history_inventaris_habis';
 
+    protected $casts = [
+    'waktu_penggunaan' => 'datetime',
+    ];
+
     protected $fillable = [
-        'waktu penggunaan',
+        'waktu_penggunaan',
         'jumlah',
-        'inventaris habis',
+        'inventaris_habis_id',
         'user_id'
     ];
 
@@ -25,6 +29,7 @@ class history_inventaris_habis extends Model
 
     public function inventarisHabis()
     {
-        return $this->belongsTo(InventarisHabis::class);
+        return $this->belongsTo(InventarisHabis::class, 'inventaris_habis_id');
+        // Ditambahkan parameter foreign key eksplisit
     }
 }

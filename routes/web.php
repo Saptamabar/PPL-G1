@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnggrekController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HistoryInventarisController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\OrchidDetectorController;
@@ -34,13 +35,6 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/logout', 'logout')->name('logout');
 });
 
-// Profile Routes
-Route::prefix('profile')->group(function(){
-    Route::get('/',[ProfileController::class,'index'])->name('profile.index');
-    Route::get('/edit',[ProfileController::class,'show'])->name('profile.edit');
-    Route::post('/editpassword',[ProfileController::class,'update'])->name('profile.update');
-    Route::post('/edit',[ProfileController::class,'password'])->name('profile.password');
-});
 
 // Orchid Detection Routes
 Route::controller(OrchidDetectorController::class)->group(function() {
@@ -51,6 +45,15 @@ Route::controller(OrchidDetectorController::class)->group(function() {
 
 // Authenticated Routes
 Route::middleware('auth')->group(function() {
+
+    // Profile Routes
+    Route::prefix('profile')->group(function(){
+        Route::get('/',[ProfileController::class,'index'])->name('profile.index');
+        Route::get('/edit',[ProfileController::class,'show'])->name('profile.edit');
+        Route::post('/editpassword',[ProfileController::class,'update'])->name('profile.update');
+        Route::post('/edit',[ProfileController::class,'password'])->name('profile.password');
+    });
+
     Route::middleware('iskaryawan')->group(function(){
         Route::get('/dashboardkaryawan', function () {
             return view('karyawan.dashboard');
@@ -71,24 +74,27 @@ Route::middleware('auth')->group(function() {
             'anggrek' => AnggrekController::class,
         ]);
 
+        Route::get('/inventaris', [InventarisController::class, 'index'])->name('inventaris.index');
+
 
         Route::prefix('inventaris-habis')->group(function () {
-            Route::get('/', [InventarisController::class, 'index'])->name('inventaris.index');
+            Route::get('/history',[HistoryInventarisController::class,'indexHabis'])->name('inventaris-habis.history');
             Route::get('/create', [InventarisController::class, 'createHabis'])->name('inventaris-habis.create');
             Route::post('/', [InventarisController::class, 'storeHabis'])->name('inventaris-habis.store');
-            Route::get('/{inventarisHabi}', [InventarisController::class, 'showHabis'])->name('inventaris-habis.show');
-            Route::get('/{inventarisHabi}/edit', [InventarisController::class, 'editHabis'])->name('inventaris-habis.edit');
-            Route::put('/{inventarisHabi}', [InventarisController::class, 'updateHabis'])->name('inventaris-habis.update');
-            Route::delete('/{inventarisHabi}', [InventarisController::class, 'destroyHabis'])->name('inventaris-habis.destroy');
+            Route::get('/{inventarisHabis}', [InventarisController::class, 'showHabis'])->name('inventaris-habis.show');
+            Route::get('/{inventarisHabis}/edit', [InventarisController::class, 'editHabis'])->name('inventaris-habis.edit');
+            Route::put('/{inventarisHabis}', [InventarisController::class, 'updateHabis'])->name('inventaris-habis.update');
+            Route::delete('/{inventarisHabis}', [InventarisController::class, 'destroyHabis'])->name('inventaris-habis.destroy');
         });
 
         Route::prefix('inventaris-tak-habis')->group(function () {
+            Route::get('/history',[HistoryInventarisController::class,'indextakHabis'])->name('inventaris-tak-habis.history');
             Route::get('/create', [InventarisController::class, 'createTakHabis'])->name('inventaris-tak-habis.create');
             Route::post('/', [InventarisController::class, 'storeTakHabis'])->name('inventaris-tak-habis.store');
-            Route::get('/{inventarisTakHabi}', [InventarisController::class, 'showTakHabis'])->name('inventaris-tak-habis.show');
-            Route::get('/{inventarisTakHabi}/edit', [InventarisController::class, 'editTakHabis'])->name('inventaris-tak-habis.edit');
-            Route::put('/{inventarisTakHabi}', [InventarisController::class, 'updateTakHabis'])->name('inventaris-tak-habis.update');
-            Route::delete('/{inventarisTakHabi}', [InventarisController::class, 'destroyTakHabis'])->name('inventaris-tak-habis.destroy');
+            Route::get('/{inventarisTakHabis}', [InventarisController::class, 'showTakHabis'])->name('inventaris-tak-habis.show');
+            Route::get('/{inventarisTakHabis}/edit', [InventarisController::class, 'editTakHabis'])->name('inventaris-tak-habis.edit');
+            Route::put('/{inventarisTakHabis}', [InventarisController::class, 'updateTakHabis'])->name('inventaris-tak-habis.update');
+            Route::delete('/{inventarisTakHabis}', [InventarisController::class, 'destroyTakHabis'])->name('inventaris-tak-habis.destroy');
         });
 
         Route::prefix('karyawan')->group(function () {

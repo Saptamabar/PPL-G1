@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class InventarisTakHabis extends Model
 {
-    /** @use HasFactory<\Database\Factories\InventarisTakHabisFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -15,4 +14,9 @@ class InventarisTakHabis extends Model
         'kode',
         'status'
     ];
+
+    public function history()
+    {
+        return $this->hasMany(HistoryInventarisTakHabis::class, 'inventaris_tak_habis_id');
+    }
 }

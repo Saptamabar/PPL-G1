@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Anggrek;
 use App\Models\Article;
-use App\Models\history_inventaris_habis;
-use App\Models\history_inventaris_tak_habis;
 use App\Models\InventarisHabis;
-use App\Models\InventarisTakHabis;
-use App\Models\User;
 use Illuminate\Database\Seeder;
+use App\Models\InventarisTakHabis;
+use App\Models\HistoryInventarisHabis;
+use App\Models\HistoryInventarisTakHabis;
+use App\Models\history_inventaris_tak_habis;
 
 class DatabaseSeeder extends Seeder
 {
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
         InventarisHabis::factory(2)->create();
         InventarisTakHabis::factory(2)->create();
         Article::factory(11)->create();
-        history_inventaris_habis::factory(10)->create();
-        history_inventaris_tak_habis::factory(10)->create();
+        HistoryInventarisHabis::factory(10)->create();
+        HistoryInventarisTakHabis::factory(10)->create();
     }
 }

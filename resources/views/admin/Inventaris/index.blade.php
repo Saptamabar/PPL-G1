@@ -4,12 +4,18 @@
 
 @section('content')
 <div class="container mx-auto px-2 sm:px-6">
+    <!-- Inventaris Habis Section -->
     <div class="mb-12">
         <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
             <h2 class="text-xl sm:text-2xl font-semibold">Daftar Inventaris Habis</h2>
-            <a href="{{ route('inventaris-habis.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm sm:text-base w-full sm:w-auto text-center">
-                Tambah Inventaris Habis
-            </a>
+            <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                <a href="{{ route('inventaris-habis.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm sm:text-base w-full sm:w-auto text-center">
+                    Tambah Inventaris Habis
+                </a>
+                <a href="{{ route('inventaris-habis.history') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm sm:text-base w-full sm:w-auto text-center">
+                    History Inventaris Habis
+                </a>
+            </div>
         </div>
 
         @if ($message = Session::get('success'))
@@ -75,9 +81,14 @@
     <div class="mb-12">
         <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
             <h2 class="text-xl sm:text-2xl font-semibold">Daftar Inventaris Tidak Habis</h2>
-            <a href="{{ route('inventaris-tak-habis.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm sm:text-base w-full sm:w-auto text-center">
-                Tambah Inventaris Tidak Habis
-            </a>
+            <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                <a href="{{ route('inventaris-tak-habis.create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm sm:text-base w-full sm:w-auto text-center">
+                    Tambah Inventaris Tidak Habis
+                </a>
+                <a href="{{ route('inventaris-tak-habis.history') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm sm:text-base w-full sm:w-auto text-center">
+                    History Inventaris Tidak Habis
+                </a>
+            </div>
         </div>
 
         <div class="bg-white shadow-md rounded overflow-x-auto">

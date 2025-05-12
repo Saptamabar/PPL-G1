@@ -14,4 +14,9 @@ class InventarisHabis extends Model
         'jenis',
         'jumlah',
     ];
+
+    public function history()
+    {
+        return $this->hasMany(HistoryInventarisHabis::class, 'inventaris_habis_id');
+    }
 }

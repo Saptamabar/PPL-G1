@@ -61,4 +61,14 @@ class User extends Authenticatable
     {
         return $this->role === 'karyawan';
     }
+
+    public function historyInventarisHabis()
+    {
+        return $this->hasMany(HistoryInventarisHabis::class);
+    }
+
+    public function historyInventarisTakHabis()
+    {
+        return $this->hasMany(HistoryInventarisTakHabis::class);
+    }
 }

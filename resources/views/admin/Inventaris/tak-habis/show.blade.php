@@ -16,7 +16,7 @@
         </div>
 
         <div class="flex justify-end">
-            <a href="{{ route('inventaris-tak-habis.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+            <a href="{{ route('inventaris.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
                 Kembali
             </a>
         </div>
