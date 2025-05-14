@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['admin', 'karyawan'])
             ->default('karyawan');
-            $table->string('foto_profile');
-            $table->string('no_hp');
+            $table->string('foto_profile')->nullable();
+            $table->string('no_hp')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

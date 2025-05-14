@@ -12,11 +12,16 @@ class InventarisTakHabis extends Model
     protected $fillable = [
         'nama',
         'kode',
-        'status'
+        'status',
+        'user_id'
     ];
 
     public function history()
     {
         return $this->hasMany(HistoryInventarisTakHabis::class, 'inventaris_tak_habis_id');
+    }
+    public function peminjam()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

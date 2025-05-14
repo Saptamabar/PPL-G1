@@ -33,7 +33,7 @@
             </div>
 
             <div class="flex justify-end">
-                <a href="{{ route('inventaris.index') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg mr-2">
+                <a href="{{ route('inventaris.habis') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg mr-2">
                     Batal
                 </a>
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">

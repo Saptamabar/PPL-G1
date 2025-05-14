@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use SebastianBergmann\Diff\Diff;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
@@ -50,9 +52,16 @@ class OrchidDetectorController extends Controller
                 ]);
 
             if ($response->successful()) {
+
+                $requestTime = $request->input('time');
+
+                $requestCarbon = Carbon::createFromFormat('H:i:s', $requestTime);
+                $time = now()->diffForHumans($requestCarbon);
+
                 $result = $response->json();
                 $result['image_path'] = $imagePath;
-                return back()->with('result', $result);
+
+                return back()->with('result',['waktu' => $time, 'result' => $result]);
             }
 
             // Hapus jika gagal

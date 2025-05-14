@@ -7,21 +7,21 @@
 
         <div class="mb-4">
             <label class="block text-gray-700 font-medium mb-2">Nama Barang</label>
-            <p class="text-gray-900">{{ $inventarisHabi->nama }}</p>
+            <p class="text-gray-900">{{ $inventarisHabis->nama }}</p>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 font-medium mb-2">Jenis Barang</label>
-            <p class="text-gray-900">{{ $inventarisHabi->jenis }}</p>
+            <p class="text-gray-900">{{ $inventarisHabis->jenis }}</p>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 font-medium mb-2">Jumlah</label>
-            <p class="text-gray-900">{{ $inventarisHabi->jumlah }}</p>
+            <p class="text-gray-900">{{ $inventarisHabis->jumlah }}</p>
         </div>
 
         <div class="flex justify-end">
-            <a href="{{ route('inventaris.index') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
+            <a href="{{ route('inventaris.habis') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">
                 Kembali
             </a>
         </div>

@@ -3,7 +3,7 @@
 @section('navbar')
 <body class="bg-gray-100 font-sans">
     <div class="flex flex-col md:flex-row h-screen">
-        <!-- Mobile Sidebar Toggle -->
+
         <div class="md:hidden bg-primary-600 p-4 flex justify-between items-center sticky top-0 z-20">
             <div class="text-xl font-bold text-white">Anggrek AI</div>
             <button id="sidebarToggle" class="text-white focus:outline-none">
@@ -13,7 +13,7 @@
             </button>
         </div>
 
-        <!-- Sidebar - Hidden on mobile by default -->
+       
         <div id="sidebar" class="w-64 bg-primary-700 text-white p-4 transform -translate-x-full md:translate-x-0 transition-transform duration-300 fixed md:relative h-full z-50 overflow-y-auto flex flex-col">
             <div>
                 <div class="text-xl font-bold mb-8 hidden md:block">Anggrek AI</div>
@@ -34,10 +34,25 @@
                                 Anggrek
                             </a>
                         </li>
-                        <li class="mb-2">
-                            <a href="{{ route('inventaris.index')}}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('inventaris.*') ? 'bg-primary-600' : '' }}">
+                        <li class="mb-2 relative group">
+                            <a href="#" class="flex items-center justify-between px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs(['inventaris.*','inventaris-habis.*','inventaris-tak-habis.*']) ? 'bg-primary-600' : '' }}">
                                 Inventaris
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
                             </a>
+                            <ul class="ml-4 mt-1 hidden group-hover:block bg-primary-800 rounded">
+                                <li class="mb-1">
+                                    <a href="{{ route('inventaris.habis') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs(['inventaris.habis','inventaris-habis.*']) ? 'bg-primary-600' : '' }}">
+                                        Inventaris Habis
+                                    </a>
+                                </li>
+                                <li class="mb-1">
+                                    <a href="{{ route('inventaris.takhabis') }}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs(['inventaris.takhabis','inventaris-tak-habis.*']) ? 'bg-primary-600' : '' }}">
+                                        Inventaris Tak Habis
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="mb-2">
                             <a href="{{ route('karyawan.index')}}" class="block px-4 py-2 rounded hover:bg-primary-600 {{ request()->routeIs('karyawan.*') ? 'bg-primary-600' : '' }}">

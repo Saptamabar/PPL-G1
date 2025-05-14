@@ -20,6 +20,7 @@
                     <input type="file" name="image" accept="image/*" required
                         class="block w-full text-gray-700 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">
                 </div>
+                <input type="time" id="time" name="time" hidden value="{{ now()->format('H:i:s') }}">
                 <button type="submit"
                     class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                     Deteksi Sekarang
@@ -32,7 +33,6 @@
                         const imagePath = @json(session('result.image_path'));
                         console.log(@json(session('result')));
 
-                        // Kirim DELETE request untuk menghapus gambar setelah ditampilkan
                         fetch("{{ route('detect.deleteImage') }}", {
                             method: "DELETE",
                             headers: {
@@ -43,7 +43,7 @@
                         })
                         .then(res => res.json())
                         .then(data => {
-                            console.log("Image deleted:", data.message);
+                            console.log("Image deleted:", data);
                         })
                         .catch(err => console.error("Delete error:", err));
                     });
@@ -56,7 +56,7 @@
                         <div class="relative w-full md:w-2/3">
                             <h4 class="font-bold mb-2 text-gray-700">Gambar yang Diperiksa:</h4>
                             <div class="relative w-full">
-                                <img src="{{ asset('storage/' . session('result.image_path')) }}"
+                                <img src="{{ asset('storage/' . session('result.result.image_path')) }}"
                                     alt="Detected Orchid"
                                     class="w-full h-auto rounded-lg shadow-md">
                             </div>
@@ -69,15 +69,15 @@
                                 <div class="grid grid-cols-1 gap-4">
                                     <div>
                                         <p class="font-semibold">Jenis Penyakit:</p>
-                                        <p>{{ session('result.outputs.0.predictions.predictions.0.class') }}</p>
+                                        <p>{{ session('result.result.outputs.0.predictions.predictions.0.class') }}</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold">Tingkat Kepercayaan:</p>
-                                        <p>{{ round(session('result.outputs.0.predictions.predictions.0.confidence') * 100, 2) }}%</p>
+                                        <p class="font-semibold">Tingkat Akurasi:</p>
+                                        <p>{{ round(session('result.result.outputs.0.predictions.predictions.0.confidence') * 100, 2) }}%</p>
                                     </div>
                                     <div>
                                         <p class="font-semibold">Waktu Proses:</p>
-                                        <p>{{ round(session('result.outputs.0.predictions.time'), 4) }} detik</p>
+                                        <p>{{ session('result.waktu') }}</p>
                                     </div>
                                 </div>
                             </div>

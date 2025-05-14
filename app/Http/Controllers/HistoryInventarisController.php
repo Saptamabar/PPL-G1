@@ -13,7 +13,7 @@ class HistoryInventarisController extends Controller
         $historyHabis = HistoryInventarisHabis::with(['user', 'inventarisHabis'])
                             ->latest()
                             ->paginate(10);
-       
+
         return view('admin.inventaris.habis.history', compact('historyHabis'));
     }
 
@@ -27,7 +27,6 @@ class HistoryInventarisController extends Controller
         return view('karyawan.inventaris.habis.history', compact('historyHabis'));
     }
 
-    // History Inventaris Tak Habis
     public function indexTakHabis()
     {
         $historyTakHabis = HistoryInventarisTakHabis::with(['user', 'inventarisTakHabis'])

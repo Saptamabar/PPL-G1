@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama')->unique();
             $table->string('kode')->unique();
             $table->enum('status',['tidak tersedia','tersedia'])->default('tersedia');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -27,4 +28,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('inventaris_tak_habis');
     }
+
+    
 };
