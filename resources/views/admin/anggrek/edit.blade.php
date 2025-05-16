@@ -28,7 +28,7 @@
                 <label for="foto" class="block text-gray-700 text-sm font-bold mb-2">Foto</label>
                 @if($anggrek->foto)
                     <div class="mb-2">
-                        <img src="{{ asset($anggrek->foto) }}" alt="{{ $anggrek->nama_anggrek }}" class="h-20 w-20 object-cover rounded">
+                        <x-cloudinary::image public-id="{{ $anggrek->foto }}" alt="{{ $anggrek->nama_anggrek }}" class="h-20 w-20 object-cover rounded"/>
                     </div>
                 @endif
                 <input type="file" name="foto" id="foto" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">

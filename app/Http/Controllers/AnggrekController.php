@@ -40,7 +40,7 @@ class AnggrekController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('foto')) {
-            $data['foto'] = $request->file('foto')->store('foto_anggrek', 'public');
+            $data['foto'] = $request->file('foto')->store('foto_anggrek', 'cloudinary');
         }
 
         Anggrek::create($data);
@@ -80,11 +80,11 @@ class AnggrekController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('foto')) {
-           
+
             if ($anggrek->foto) {
                 Storage::disk('public')->delete($anggrek->foto);
             }
-            $data['foto'] = $request->file('foto')->store('foto_anggrek', 'public');
+            $data['foto'] = $request->file('foto')->store('foto_anggrek', 'cloudinary');
         }
 
         $anggrek->update($data);
@@ -99,7 +99,7 @@ class AnggrekController extends Controller
     public function destroy(Anggrek $anggrek)
     {
         if ($anggrek->foto) {
-            Storage::disk('public')->delete($anggrek->foto);
+            Storage::disk('cloudinary')->delete($anggrek->foto);
         }
 
         $anggrek->delete();

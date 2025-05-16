@@ -17,7 +17,7 @@
                 @foreach($anggreks as $anggrek)
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-xl transition duration-300">
                     <div class="pt-4 px-4">
-                    <img src="{{ asset($anggrek['foto']) }}" alt="{{ $anggrek['nama_anggrek'] }}" class="w-full h-48 object-cover rounded-lg">
+                    <x-cloudinary::image public-id="{{ $anggrek->foto }}" alt="{{ $anggrek['nama_anggrek'] }}" class="w-full h-48 object-cover rounded-lg"/>
                     </div>
                         <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-grey-900">{{ $anggrek['nama_anggrek'] }}</h3>

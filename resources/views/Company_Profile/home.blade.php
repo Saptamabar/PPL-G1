@@ -26,7 +26,7 @@
                 @foreach($featuredProducts as $product)
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-xl transition duration-300">
                     <div class="pt-4 px-4">
-                    <img src="{{ asset($product['foto']) }}" alt="{{ $product['nama_anggrek'] }}" class="w-full h-48 object-cover rounded-lg">
+                    <x-cloudinary::image public-id="{{ $product->foto }}" alt="{{ $product['nama_anggrek'] }}" class="w-full h-48 object-cover rounded-lg"/>
                     </div>
                         <div class="p-6">
                         <h3 class="text-xl font-bold mb-2 text-grey-900">{{ $product['nama_anggrek'] }}</h3>
@@ -63,8 +63,8 @@
                 <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-gray-200">
                     <!-- Article Image -->
                     <div class="p-4">
-                        <img src="{{ asset($artikel['image']) }}" alt="{{ $artikel['title'] }}"
-                             class="w-full h-48 object-cover rounded-lg">
+                         <x-cloudinary::image public-id="{{ $artikel->image }}" alt="{{ $artikel['title'] }}"
+                             class="w-full h-48 object-cover rounded-lg"/>
                     </div>
 
                     <!-- Article Content -->

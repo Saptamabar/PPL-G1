@@ -14,7 +14,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                 @if($anggrek->foto)
-                    <img src="{{ asset($anggrek->foto) }}" alt="{{ $anggrek->nama_anggrek }}" class="w-full h-auto rounded-lg shadow">
+                    <x-cloudinary::image public-id="{{ $anggrek->foto }}" alt="{{ $anggrek->nama_anggrek }}" class="w-full h-auto rounded-lg shadow"/>
                 @else
                     <div class="bg-gray-200 w-full h-64 flex items-center justify-center rounded-lg">
                         <span class="text-gray-500">Tidak ada gambar</span>

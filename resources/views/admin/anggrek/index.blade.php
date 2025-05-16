@@ -36,7 +36,7 @@
                     <td class="py-3 px-2 sm:px-6 text-left">{{ $anggrek->nama_latin }}</td>
                     <td class="py-3 px-2 sm:px-6 text-left">
                         @if($anggrek->foto)
-                            <img src="{{ asset($anggrek->foto) }}" alt="{{ $anggrek->nama_anggrek }}" class="h-10 w-10 object-cover rounded">
+                            <x-cloudinary::image public-id="{{ $anggrek->foto }}" alt="{{ $anggrek->nama_anggrek }}" class="h-10 w-10 object-cover rounded"/>
                         @else
                             <span class="text-gray-400">No image</span>
                         @endif

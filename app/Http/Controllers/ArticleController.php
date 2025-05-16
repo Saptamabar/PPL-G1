@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class ArticleController extends Controller
@@ -32,7 +33,9 @@ class ArticleController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('article-images', 'public');
+            $uploadedFile = $request->file('image');
+            $uploadedFileUrl = Storage::disk('cloudinary')->put('articles', $uploadedFile);
+            $validated['image'] = $uploadedFileUrl;
         }
 
         $validated['user_id'] = Auth::id();
@@ -41,6 +44,7 @@ class ArticleController extends Controller
 
         return redirect()->route('articles.index')->with('success', 'Artikel berhasil dibuat!');
     }
+
 
     public function show(Article $article)
     {
@@ -64,17 +68,12 @@ class ArticleController extends Controller
         ]);
 
         if ($request->has('remove_image')) {
-
-            if ($article->image) {
-                Storage::disk('public')->delete($article->image);
-                $validated['image'] = null;
-            }
+            $validated['image'] = null;
         } elseif ($request->hasFile('image')) {
 
-            if ($article->image) {
-                Storage::disk('public')->delete($article->image);
-            }
-            $validated['image'] = $request->file('image')->store('article-images', 'public');
+            $uploadedFile = $request->file('image');
+            $uploadedFileUrl = Storage::disk('cloudinary')->put('articles', $uploadedFile);
+            $validated['image'] = $uploadedFileUrl;
         }
 
         $article->update($validated);
@@ -82,17 +81,18 @@ class ArticleController extends Controller
         return redirect()->route('articles.index')->with('success', 'Artikel berhasil diperbarui!');
     }
 
+
     public function destroy(Article $article)
     {
         $this->authorize('delete', $article);
 
         if ($article->image) {
-            Storage::disk('public')->delete($article->image);
+            Storage::disk('cloudinary')->delete($article->image);
         }
 
         $article->delete();
 
         return redirect()->route('articles.index')->with('success', 'Artikel berhasil dihapus!');
     }
-    
+
 }

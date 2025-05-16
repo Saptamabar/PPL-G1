@@ -16,7 +16,6 @@
 
         <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-
             <div class="flex flex-col lg:flex-row gap-8">
                 <div class="lg:w-1/2 space-y-6">
                     <div>

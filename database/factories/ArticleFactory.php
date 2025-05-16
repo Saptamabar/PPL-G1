@@ -20,7 +20,7 @@ class ArticleFactory extends Factory
         return [
             'title'=>fake()->unique()->text(8),
             'content'=>fake()->sentence(150),
-            'image'=>'asset/Hero.jpg',
+            'image'=>'Hero_ebhvs9',
             'user_id'=>User::first()->id
         ];
     }

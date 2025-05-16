@@ -18,7 +18,7 @@ class AnggrekFactory extends Factory
     {
         return [
             'nama_anggrek' => fake()->unique()->words(2, true),
-            'foto'=> 'storage/foto_anggrek/hero-orchid.jpg',
+            'foto'=> 'Hero_ebhvs9',
             'nama_latin' => fake()->unique()->words(2, true),
         ];
     }

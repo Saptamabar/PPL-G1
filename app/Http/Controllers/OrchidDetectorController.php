@@ -22,21 +22,19 @@ class OrchidDetectorController extends Controller
         ]);
 
         try {
-            // Simpan gambar sementara
+
             $imagePath = $request->file('image')->store('orchid-images', 'public');
 
-            // Ambil base64 dari file yang diupload
+
             $imageData = base64_encode(file_get_contents($request->file('image')->getRealPath()));
             $mime = $request->file('image')->getMimeType(); // ex: image/jpeg
 
-            // Format base64 untuk HTML/JSON
+
             $base64Image = "data:$mime;base64,$imageData";
 
-            // Konfigurasi
             $apiKey = config('api_orchid.apikey');
             $url = "https://serverless.roboflow.com/infer/workflows/sapta/custom-workflow";
 
-            // Kirim request
             $response = Http::withOptions(['verify' => false])
                 ->withHeaders([
                     'Content-Type' => 'application/json'
@@ -64,7 +62,6 @@ class OrchidDetectorController extends Controller
                 return back()->with('result',['waktu' => $time, 'result' => $result]);
             }
 
-            // Hapus jika gagal
             Storage::delete($imagePath);
 
             return back()->withErrors(['error' => 'Gagal memproses gambar: ' . $response->body()]);

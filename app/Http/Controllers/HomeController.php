@@ -24,7 +24,7 @@ class HomeController extends Controller
         }
         $articles = Article::latest()->paginate(6);
 
-        return view('Company_Profile.Artikel',compact('articles'));
+        return view('Company_Profile.artikel',compact('articles'));
     }
 
     public function search($query)
@@ -35,7 +35,7 @@ class HomeController extends Controller
             ->latest()
             ->paginate(6);
 
-        return view('Company_Profile.Artikel', [
+        return view('Company_Profile.artikel', [
             'articles' => $articles,
             'searchQuery' => $query
         ]);

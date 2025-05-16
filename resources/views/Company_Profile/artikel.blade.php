@@ -22,8 +22,8 @@
                 @foreach ($articles as $article)
                     <div class="bg-white shadow rounded-lg overflow-hidden h-full flex flex-col">
                         @if ($article->image)
-                            <img src="{{ asset($article->image) }}" alt="{{ $article->title }}"
-                                class="w-full h-48 object-cover">
+                            <x-cloudinary::image public-id="{{ $article->image }}" alt="{{ $article->title }}"
+                                class="w-full h-48 object-cover"/>
                         @endif
 
                         <div class="p-6 flex-grow">
