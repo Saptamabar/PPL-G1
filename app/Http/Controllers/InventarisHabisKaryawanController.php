@@ -16,41 +16,6 @@ class InventarisHabisKaryawanController extends Controller
         return view('karyawan.Inventaris.habis.index',compact('inventarisHabis'));
     }
 
-    public function showUsageForm()
-    {
-        $inventarisHabis = InventarisHabis::where('jumlah', '>', 0)->get();
-        return view('karyawan.inventaris.habis.usage', compact('inventarisHabis'));
-    }
-
-    public function processUsage(Request $request)
-    {
-        $request->validate([
-            'inventaris_habis_id' => 'required|exists:inventaris_habis,id',
-            'jumlah' => 'required|integer|min:1',
-            'keterangan' => 'required|string|max:255',
-        ]);
-
-        $inventaris = InventarisHabis::findOrFail($request->inventaris_habis_id);
-
-        if ($inventaris->jumlah < $request->jumlah) {
-            return back()->with('error', 'Stok tidak mencukupi!');
-        }
-
-        HistoryInventarisHabis::create([
-            'inventaris_habis_id' => $inventaris->id,
-            'user_id' => Auth::id(),
-            'jumlah' => $request->jumlah,
-            'keterangan' => $request->keterangan,
-            'tanggal' => Carbon::now(),
-        ]);
-
-        $inventaris->decrement('jumlah', $request->jumlah);
-
-        return redirect()->route('inventariskaryawan-habis.index')
-                        ->with('success', 'Penggunaan barang berhasil dicatat');
-    }
-
-
     public function showConsumableHistory(InventarisHabis $inventarisHabis)
     {
         $historyHabis = HistoryInventarisHabis::where('inventaris_habis_id',$inventarisHabis->id)->paginate(10);
@@ -68,7 +33,7 @@ class InventarisHabisKaryawanController extends Controller
     public function showQuickUsageForm(Request $request)
     {
         $inventarisHabis = InventarisHabis::findOrFail($request->id);
-        return view('karyawan.inventaris.habis.quick-usage', compact('inventarisHabis'));
+        return view('karyawan.Inventaris.habis.quick-usage', compact('inventarisHabis'));
     }
 
     public function processQuickUsage(Request $request)

@@ -71,7 +71,6 @@ Route::middleware('auth')->group(function() {
             Route::get('/', [InventarisTakHabisKaryawanController::class, 'index'])->name('inventariskaryawan-tak-habis.index');
             Route::get('/borrow/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'borrowItemForm'])->name('inventariskaryawan-tak-habis.borrow-item');
             Route::post('/borrow/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'processBorrow'])->name('inventariskaryawan-tak-habis.process-borrow');
-            Route::post('/return/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return');
             Route::post('/return/{id}', [InventarisTakHabisKaryawanController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return-item');
             Route::get('/history/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'showNonConsumableHistory'])->name('inventariskaryawan-tak-habis.history');
             Route::get('/history', [InventarisTakHabisKaryawanController::class, 'showNonConsumableHistoryall'])->name('inventariskaryawan-tak-habis.historyall');

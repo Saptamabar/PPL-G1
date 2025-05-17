@@ -22,7 +22,7 @@ class InventarisTakHabisKaryawanController extends Controller
             return back()->with('error', 'Barang tidak tersedia untuk dipinjam');
         }
 
-        return view('karyawan.inventaris.tak-habis.borrow-item', compact('inventarisTakHabis'));
+        return view('karyawan.Inventaris.tak-habis.borrow-item', compact('inventarisTakHabis'));
     }
 
     public function processBorrow(Request $request, InventarisTakHabis $inventarisTakHabis)
@@ -77,7 +77,7 @@ class InventarisTakHabisKaryawanController extends Controller
     public function showNonConsumableHistory(InventarisTakHabis $inventarisTakHabis)
     {
         $historyTakHabis = HistoryInventarisTakHabis::where('inventaris_tak_habis_id',$inventarisTakHabis->id)->paginate(10);
-        return view('karyawan.inventaris.tak-habis.history', compact('historyTakHabis'));
+        return view('karyawan.Inventaris.tak-habis.history', compact('historyTakHabis'));
     }
 
     public function showNonConsumableHistoryall()
