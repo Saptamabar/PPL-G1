@@ -15,12 +15,12 @@ class UserController extends Controller
     public function index()
     {
         $karyawan = User::where('role', 'karyawan')->latest()->paginate(10);
-        return view('admin.karyawan.index', compact('karyawan'));
+        return view('admin.Karyawan.index', compact('karyawan'));
     }
 
     public function create()
     {
-        return view('admin.karyawan.create');
+        return view('admin.Karyawan.create');
     }
 
     public function store(Request $request)
@@ -53,12 +53,12 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('admin.karyawan.show', compact('user'));
+        return view('admin.Karyawan.show', compact('user'));
     }
 
     public function edit(User $user)
     {
-        return view('admin.karyawan.edit', compact('user'));
+        return view('admin.Karyawan.edit', compact('user'));
     }
 
     public function update(Request $request, User $user)
