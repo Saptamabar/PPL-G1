@@ -8,12 +8,13 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <h2 class="text-2xl font-bold text-gray-800">Inventaris Tidak Habis Pakai</h2>
             <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                <a href="{{ route('inventariskaryawan-tak-habis.borrow') }}"
+                <a href="{{ route('inventariskaryawan-tak-habis.historyall') }}"
                    class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6z" />
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
                     </svg>
-                    Peminjaman Barang
+                    Riwayat Penggunaan
                 </a>
             </div>
         </div>
@@ -68,11 +69,11 @@
                                     </svg>
                                     Pinjam
                                 </a>
-                                @elseif($item->status === 'tidak tersedia' && $item->user_id == null)
+                                @elseif($item->status === 'tidak tersedia' && $item->user_id == Auth()->id())
                                 <form action="{{ route('inventariskaryawan-tak-habis.return-item', $item->id) }}" method="POST" class="inline">
                                     @csrf
                                     <button type="submit"
-                                            class="text-blue-600 hover:text-blue-900 flex items-center gap-1"
+                                            class="text-blue-600 hover:text-blue-900 flex items-center gap-1 cursor-pointer"
                                             onclick="return confirm('Apakah Anda yakin ingin mengembalikan barang ini?')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
@@ -81,7 +82,7 @@
                                     </button>
                                 </form>
                                 @endif
-                                <a href="{{ route('inventaris-tak-habis.history', $item->id) }}"
+                                <a href="{{ route('inventariskaryawan-tak-habis.history', $item->id) }}"
                                    class="text-blue-600 hover:text-blue-900 flex items-center gap-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>

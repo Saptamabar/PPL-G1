@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container mx-auto px-4 py-6">
-    <!-- Consumable Inventory Section -->
+   
     <div class="bg-white rounded-lg shadow-md p-6 mb-8">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
             <h2 class="text-2xl font-bold text-gray-800">Inventaris Habis Pakai</h2>

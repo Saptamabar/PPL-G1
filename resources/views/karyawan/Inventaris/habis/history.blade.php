@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.karyawan')
 
 @section('title', 'History Inventaris Habis')
 
@@ -7,7 +7,7 @@
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
             <h2 class="text-xl font-semibold text-gray-800">History Inventaris Habis</h2>
-            <a href="{{ route('inventaris-habis')}}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out">
+            <a href="{{ route('inventariskaryawan-habis.index')}}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out">
                 Kembali
             </a>
         </div>
@@ -19,16 +19,17 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Barang</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Waktu Penggunaan</th>
-
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pengguna</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach($historyHabis as $item)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $item->nama }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $item->inventarisHabis->nama }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $item->jumlah }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $item->waktu_penggunaan->format('d M Y') }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $item->user->name }}</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -59,21 +59,20 @@ Route::middleware('auth')->group(function() {
 
         Route::prefix('habis')->group(function(){
             Route::get('/', [InventarisHabisKaryawanController::class, 'index'])->name('inventariskaryawan-habis.index');
-            Route::get('/usage', [InventarisHabisKaryawanController::class, 'showUsageForm'])->name('inventariskaryawan-habis.usage');
-            Route::post('/usage', [InventarisHabisKaryawanController::class, 'processUsage'])->name('inventariskaryawan-habis.process-usage');
-            Route::get('/{inventarisHabi}/history', [InventarisHabisKaryawanController::class, 'showConsumableHistory'])->name('inventariskaryawan-habis.history');
+            Route::get('/history/{inventarisHabis}', [InventarisHabisKaryawanController::class, 'showConsumableHistory'])->name('inventariskaryawan-habis.history');
+            Route::get('/history', [InventarisHabisKaryawanController::class, 'showConsumableHistoryall'])->name('inventariskaryawan-habis.historyall');
             Route::get('/quick-usage/{id}', [InventarisHabisKaryawanController::class, 'showQuickUsageForm'])->name('inventariskaryawan-habis.quick-usage');
             Route::post('/quick-usage/{inventarisHabis}', [InventarisHabisKaryawanController::class, 'processQuickUsage'])->name('inventariskaryawan-habis.process-quick-usage');
         });
 
         Route::prefix('takhabis')->group(function(){
             Route::get('/', [InventarisTakHabisKaryawanController::class, 'index'])->name('inventariskaryawan-tak-habis.index');
-            Route::get('/borrow', [InventarisTakHabisKaryawanController::class, 'showBorrowForm'])->name('inventariskaryawan-tak-habis.borrow');
             Route::get('/borrow/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'borrowItemForm'])->name('inventariskaryawan-tak-habis.borrow-item');
             Route::post('/borrow/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'processBorrow'])->name('inventariskaryawan-tak-habis.process-borrow');
             Route::post('/return/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return');
             Route::post('/return/{id}', [InventarisTakHabisKaryawanController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return-item');
             Route::get('/history/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'showNonConsumableHistory'])->name('inventariskaryawan-tak-habis.history');
+            Route::get('/history', [InventarisTakHabisKaryawanController::class, 'showNonConsumableHistoryall'])->name('inventariskaryawan-tak-habis.historyall');
         });
     });
 

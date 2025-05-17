@@ -16,12 +16,6 @@ class InventarisTakHabisKaryawanController extends Controller
         return view('karyawan.Inventaris.tak-habis.index',compact('inventaristakHabis'));
     }
 
-    public function showBorrowForm()
-    {
-        $inventarisTakHabis = InventarisTakHabis::where('status', 'tersedia')->get();
-        return view('karyawan.inventaris.tak-habis.borrow', compact('inventarisTakHabis'));
-    }
-
     public function borrowItemForm(InventarisTakHabis $inventarisTakHabis)
     {
         if ($inventarisTakHabis->status !== 'tersedia') {
@@ -33,7 +27,6 @@ class InventarisTakHabisKaryawanController extends Controller
 
     public function processBorrow(Request $request, InventarisTakHabis $inventarisTakHabis)
     {
-
         $request->validate([
             'tanggal_pinjam' => 'required|date',
             'keterangan' => 'required|string|max:255',
@@ -81,9 +74,15 @@ class InventarisTakHabisKaryawanController extends Controller
         return redirect()->route('inventariskaryawan-tak-habis.index')->with('error', 'Data peminjaman tidak ditemukan');
     }
 
-    public function showNonConsumableHistory(InventarisTakHabis $inventarisTakHabi)
+    public function showNonConsumableHistory(InventarisTakHabis $inventarisTakHabis)
     {
-        $history = $inventarisTakHabi->history()->with('user')->latest()->paginate(10);
-        return view('karyawan.inventaris.tak-habis.history', compact('inventarisTakHabi', 'history'));
+        $historyTakHabis = HistoryInventarisTakHabis::where('inventaris_tak_habis_id',$inventarisTakHabis->id)->paginate(10);
+        return view('karyawan.inventaris.tak-habis.history', compact('historyTakHabis'));
+    }
+
+    public function showNonConsumableHistoryall()
+    {
+        $historyTakHabis = HistoryInventarisTakHabis::where('user_id',Auth::id())->paginate(10);
+        return view('karyawan.Inventaris.tak-habis.history',compact('historyTakHabis'));
     }
 }
