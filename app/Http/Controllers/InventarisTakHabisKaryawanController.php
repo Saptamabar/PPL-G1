@@ -52,7 +52,8 @@ class InventarisTakHabisKaryawanController extends Controller
 
     public function returnItem(InventarisTakHabis $inventarisTakHabis)
     {
-        if ($inventarisTakHabis->user_id == Auth::user()->id)
+
+        if ($inventarisTakHabis->user_id != Auth::user()->id)
         {
             return back()->with('error', 'Barang tidak sedang dipinjam');
         }
