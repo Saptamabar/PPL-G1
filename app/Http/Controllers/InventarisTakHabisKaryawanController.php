@@ -12,7 +12,7 @@ class InventarisTakHabisKaryawanController extends Controller
 {
     public function index()
     {
-        $inventaristakHabis = InventarisTakHabis::where('jumlah', '>=', 0)->latest()->paginate(10);
+        $inventaristakHabis = InventarisTakHabis::latest()->paginate(10);
         return view('karyawan.Inventaris.tak-habis.index',compact('inventaristakHabis'));
     }
 
