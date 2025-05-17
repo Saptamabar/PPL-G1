@@ -1,4 +1,4 @@
-@extends('layouts.Karyawan')
+@extends('layouts.karyawan')
 
 @section('title', 'History Inventaris Tak Habis')
 
