@@ -48,8 +48,10 @@ Route::middleware('auth')->group(function() {
     Route::prefix('profile')->group(function(){
         Route::get('/',[ProfileController::class,'index'])->name('profile.index');
         Route::get('/edit',[ProfileController::class,'show'])->name('profile.edit');
-        Route::post('/editpassword',[ProfileController::class,'update'])->name('profile.update');
-        Route::post('/edit',[ProfileController::class,'password'])->name('profile.password');
+        Route::get('/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::post('/', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo');
+        Route::post('/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
     });
 
     Route::middleware('iskaryawan')->group(function(){

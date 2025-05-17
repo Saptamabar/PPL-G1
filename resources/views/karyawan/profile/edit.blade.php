@@ -1,11 +1,10 @@
-@extends('layouts.admin')
+@extends('layouts.karyawan')
 
 @section('title', 'Edit Profile')
 
 @section('content')
 <div class="bg-white rounded-lg shadow p-6">
     <div class="flex flex-col md:flex-row gap-8">
-        <!-- Profile Picture Section -->
         <div class="md:w-1/3 flex flex-col items-center">
             <form action="{{ route('profile.photo')}}" method="POST" enctype="multipart/form-data" id="photo-form">
                 @csrf

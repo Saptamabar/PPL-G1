@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => 'admin123',
             'role' => 'admin',
-            'foto_profile' => 'asset/Hero.jpg',
+            'foto_profile' => 'Hero_ebhvs9',
             'no_hp' => "01231231312"
         ]);
         User::factory()->create([
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'Karyawan@gmail.com',
             'password' => 'karyawan123',
             'role' => 'karyawan',
-            'foto_profile' => 'asset/Hero.jpg',
+            'foto_profile' => 'Hero_ebhvs9',
             'no_hp' => "01231231312"
         ]);
         Anggrek::factory(11)->create();

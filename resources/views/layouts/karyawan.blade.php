@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="{{--  --}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('employees.*') ? 'bg-primary-600' : '' }}">
+                        <a href="{{ route('profile.index')}}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('profile.*') ? 'bg-primary-600' : '' }}">
                             Profile
                         </a>
                     </li>
