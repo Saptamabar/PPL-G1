@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnggrekController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrchidDetectorController;
 use App\Http\Controllers\HistoryInventarisController;
 use App\Http\Controllers\InventarisHabisAdminController;
@@ -45,6 +46,8 @@ Route::controller(OrchidDetectorController::class)->group(function() {
 
 Route::middleware('auth')->group(function() {
 
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::prefix('profile')->group(function(){
         Route::get('/',[ProfileController::class,'index'])->name('profile.index');
         Route::get('/edit',[ProfileController::class,'show'])->name('profile.edit');
@@ -55,9 +58,6 @@ Route::middleware('auth')->group(function() {
     });
 
     Route::middleware('iskaryawan')->group(function(){
-        Route::get('/dashboardkaryawan', function () {
-            return view('karyawan.dashboard');
-        })->name('dashboardkaryawan');
 
         Route::prefix('habis')->group(function(){
             Route::get('/', [InventarisHabisKaryawanController::class, 'index'])->name('inventariskaryawan-habis.index');
@@ -71,17 +71,13 @@ Route::middleware('auth')->group(function() {
             Route::get('/', [InventarisTakHabisKaryawanController::class, 'index'])->name('inventariskaryawan-tak-habis.index');
             Route::get('/borrow/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'borrowItemForm'])->name('inventariskaryawan-tak-habis.borrow-item');
             Route::post('/borrow/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'processBorrow'])->name('inventariskaryawan-tak-habis.process-borrow');
-            Route::post('/return/{id}', [InventarisTakHabisKaryawanController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return-item');
+            Route::post('/return/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'returnItem'])->name('inventariskaryawan-tak-habis.return-item');
             Route::get('/history/{inventarisTakHabis}', [InventarisTakHabisKaryawanController::class, 'showNonConsumableHistory'])->name('inventariskaryawan-tak-habis.history');
             Route::get('/history', [InventarisTakHabisKaryawanController::class, 'showNonConsumableHistoryall'])->name('inventariskaryawan-tak-habis.historyall');
         });
     });
 
     Route::middleware('isadmin')->group(function() {
-
-        Route::get('/dashboardadmin', function () {
-            return view('admin.dashboard');
-        })->name('dashboardadmin');
 
 
         Route::resources([

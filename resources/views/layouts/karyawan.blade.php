@@ -19,7 +19,7 @@
             <nav>
                 <ul>
                     <li class="mb-2">
-                        <a href="{{ route('dashboardkaryawan') }}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('dashboardkaryawan') ? 'bg-primary-600' : '' }}">
+                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 rounded hover:bg-primary-700 {{ request()->routeIs('dashboard') ? 'bg-primary-600' : '' }}">
                             Dashboard
                         </a>
                     </li>

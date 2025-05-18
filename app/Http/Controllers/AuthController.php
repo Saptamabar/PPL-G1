@@ -24,9 +24,9 @@ class AuthController extends Controller
     protected function redirectToDashboard()
     {
         if (Auth::user()->role === 'admin') {
-            return redirect('/dashboardadmin');
+            return redirect('/dashboard');
         }
-        return redirect('/dashboardkaryawan');
+        return redirect('/dashboard');
     }
 
     public function login(Request $request)
@@ -42,9 +42,9 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role === 'admin') {
-                return redirect()->intended('/dashboardadmin');
+                return redirect()->intended('/dashboard');
             } else {
-                return redirect()->intended('/dashboardkaryawan');
+                return redirect()->intended('/dashboard');
             }
         }
 
