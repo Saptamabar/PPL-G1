@@ -27,7 +27,7 @@ class OrchidDetectorController extends Controller
 
 
             $imageData = base64_encode(file_get_contents($request->file('image')->getRealPath()));
-            $mime = $request->file('image')->getMimeType(); // ex: image/jpeg
+            $mime = $request->file('image')->getMimeType(); 
 
 
             $base64Image = "data:$mime;base64,$imageData";

@@ -35,7 +35,6 @@
             </div>
         </div>
 
-        <!-- Riwayat Penggunaan Inventaris Habis -->
         <div class="bg-white shadow-md rounded-lg p-6 mb-6">
             <h2 class="text-xl font-semibold mb-4">Riwayat Penggunaan Barang Habis Pakai</h2>
 
@@ -75,7 +74,6 @@
             @endif
         </div>
 
-        <!-- Riwayat Peminjaman Inventaris Tak Habis -->
         <div class="bg-white shadow-md rounded-lg p-6">
             <h2 class="text-xl font-semibold mb-4">Riwayat Peminjaman Barang Tak Habis Pakai</h2>
 
