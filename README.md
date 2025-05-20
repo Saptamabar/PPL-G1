@@ -1,4 +1,4 @@
-# Anggrek AI
+# Anggrek AI : SISTEM INFORMASI MANAJEMEN STOK DAN IMPLEMENTASI AI UNTUK DETEKSI PENYAKIT ANGGREK BERBASIS WEBSITE
 
 Anggrek AI adalah sistem informasi berbasis website yang berfungsi sebagai platform manajemen stok anggrek sekaligus alat deteksi penyakit tanaman anggrek berbasis kecerdasan buatan (AI). Sistem ini dikembangkan untuk membantu Kebun Anggrek Budi Vespa Endut dalam meningkatkan efisiensi operasional perkebunan serta mengoptimalkan pengelolaan inventaris dan deteksi dini penyakit pada tanaman anggrek.
 
