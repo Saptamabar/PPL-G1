@@ -20,7 +20,7 @@ class InventarisHabisKaryawanController extends Controller
     {
         $historyHabis = HistoryInventarisHabis::where('inventaris_habis_id',$inventarisHabis->id)->paginate(10);
         // dd($historyHabis);
-        return view('karyawan.inventaris.habis.history', compact( 'historyHabis') );
+        return view('karyawan.Inventaris.habis.history', compact( 'historyHabis') );
     }
 
     public function showConsumableHistoryall()

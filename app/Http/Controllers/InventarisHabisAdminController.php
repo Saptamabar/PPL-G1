@@ -15,7 +15,7 @@ class InventarisHabisAdminController extends Controller
 
      public function createHabis()
     {
-        return view('admin.inventaris.habis.create');
+        return view('admin.Inventaris.habis.create');
     }
 
     public function storeHabis(Request $request)
@@ -34,12 +34,12 @@ class InventarisHabisAdminController extends Controller
 
     public function showHabis(InventarisHabis $inventarisHabis)
     {
-        return view('admin.inventaris.habis.show', compact('inventarisHabis'));
+        return view('admin.Inventaris.habis.show', compact('inventarisHabis'));
     }
 
     public function editHabis(InventarisHabis $inventarisHabis)
     {
-        return view('admin.inventaris.habis.edit', compact('inventarisHabis'));
+        return view('admin.Inventaris.habis.edit', compact('inventarisHabis'));
     }
 
     public function updateHabis(Request $request, InventarisHabis $inventarisHabis)
