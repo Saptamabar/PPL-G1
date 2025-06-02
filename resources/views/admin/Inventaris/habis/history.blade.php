@@ -7,7 +7,7 @@
     <div class="bg-white shadow-md rounded-lg overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
             <h2 class="text-xl font-semibold text-gray-800">History Inventaris Habis</h2>
-            <a href="{{ route('inventaris-habis')}}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out">
+            <a href="{{ route('inventaris.habis')}}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out">
                 Kembali
             </a>
         </div>
