@@ -96,6 +96,7 @@ Route::middleware('auth')->group(function() {
             Route::delete('/{inventarisHabis}', [InventarisHabisAdminController::class, 'destroyHabis'])->name('inventaris-habis.destroy');
         });
 
+        
         Route::prefix('inventaris-tak-habis')->group(function () {
             Route::get('/history',[HistoryInventarisController::class,'indextakHabis'])->name('inventaris-tak-habis.history');
             Route::get('/', [InventarisTakHabisAdminController::class, 'index'])->name('inventaris.takhabis');
