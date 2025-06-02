@@ -14,7 +14,7 @@ class HistoryInventarisController extends Controller
                             ->latest()
                             ->paginate(10);
 
-        return view('admin.inventaris.habis.history', compact('historyHabis'));
+        return view('admin.Inventaris.habis.history', compact('historyHabis'));
     }
 
     public function indexKaryawanHabis()
@@ -24,7 +24,7 @@ class HistoryInventarisController extends Controller
                             ->latest()
                             ->paginate(10);
 
-        return view('karyawan.inventaris.habis.history', compact('historyHabis'));
+        return view('karyawan.Inventaris.habis.history', compact('historyHabis'));
     }
 
     public function indexTakHabis()
@@ -34,7 +34,7 @@ class HistoryInventarisController extends Controller
                                 ->paginate(10);
 
 
-        return view('admin.inventaris.tak-habis.history', compact('historyTakHabis'));
+        return view('admin.Inventaris.tak-habis.history', compact('historyTakHabis'));
     }
 
     public function indexKaryawanTakHabis()
@@ -44,6 +44,6 @@ class HistoryInventarisController extends Controller
                                 ->latest()
                                 ->paginate(10);
 
-        return view('karyawan.inventaris.tak-habis.history', compact('historyTakHabis'));
+        return view('karyawan.Inventaris.tak-habis.history', compact('historyTakHabis'));
     }
 }
