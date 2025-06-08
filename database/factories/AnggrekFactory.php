@@ -20,6 +20,7 @@ class AnggrekFactory extends Factory
             'nama_anggrek' => fake()->unique()->words(2, true),
             'foto'=> 'Hero_ebhvs9',
             'nama_latin' => fake()->unique()->words(2, true),
+            'deskripsi' => fake()->unique()->words(2, true),
         ];
     }
 }

@@ -73,9 +73,9 @@
                 <div>
                     <h3 class="text-lg font-bold mb-4">Kontak</h3>
                     <div class="space-y-2 text-gray-300">
-                        <p>Jl. Anggrek No. 123, Jakarta</p>
+                        <p>Jl. Melati No. 120, Jember</p>
                         <p>info@anggrekvespaendut.com</p>
-                        <p>+62 123 4567 890</p>
+                        <p>+62 8383 1145 969</p>
                     </div>
                 </div>
 

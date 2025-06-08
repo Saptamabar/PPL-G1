@@ -15,7 +15,7 @@
                 @csrf
                 <div class="mb-6">
                     <label class="block text-gray-700 font-bold mb-2" for="image">
-                        Unggah Foto Anggrek
+                        Unggah Foto Daun Anggrek
                     </label>
                     <input type="file" name="image" accept="image/*" required
                         class="block w-full text-gray-700 border border-gray-300 rounded-lg cursor-pointer focus:outline-none">

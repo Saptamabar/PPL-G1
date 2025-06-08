@@ -133,7 +133,7 @@
                             </div>
 
                             <div class="pt-4">
-                                <a href="/deteksi" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2.5 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                                <a href="/detect-orchid" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-2.5 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
                                     Deteksi Gambar Lain
                                 </a>
                             </div>

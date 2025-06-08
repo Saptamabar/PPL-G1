@@ -14,6 +14,7 @@ class Anggrek extends Model
     protected $fillable = [
         'nama_anggrek',
         'foto',
-        'nama_latin'
+        'nama_latin',
+        'deskripsi'
     ];
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_anggrek')->unique();
             $table->string('foto')->nullable();
             $table->string('nama_latin');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

@@ -19,6 +19,11 @@ class OrchidDetectorController extends Controller
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+        ],[
+            'image.required' => 'Gambar harus diunggah.',
+            'image.image' => 'File yang diunggah harus berupa gambar.',
+            'image.mimes' => 'Gambar harus berformat jpeg, png, atau jpg.',
+            'image.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.'
         ]);
 
         try {
@@ -27,7 +32,7 @@ class OrchidDetectorController extends Controller
 
 
             $imageData = base64_encode(file_get_contents($request->file('image')->getRealPath()));
-            $mime = $request->file('image')->getMimeType(); 
+            $mime = $request->file('image')->getMimeType();
 
 
             $base64Image = "data:$mime;base64,$imageData";
